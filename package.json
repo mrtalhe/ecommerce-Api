@@ -1,0 +1,28 @@
+{
+  "name": "auth-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "set DEBUG=app:main && nodemon index --ignore client"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "auto-bind": "^4.0.0",
+    "bcrypt": "^5.0.1",
+    "config": "^3.3.6",
+    "cors": "^2.8.5",
+    "debug": "^4.3.2",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "express-validator": "^6.13.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mkdirp": "^0.5.5",
+    "mongoose": "^6.8.3",
+    "mongoose-timestamp": "^0.6.0",
+    "winston": "^3.8.1"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "auth project",
+  "db": {
+    "address": "mongodb://127.0.0.1:27017/ecommerceApi"
+
+  },
+"jwt_key": "dfsdfff4t5j6h4j5h64564j5h645j6h45jh6"
+}
