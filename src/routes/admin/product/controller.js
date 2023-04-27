@@ -17,7 +17,10 @@ module.exports = new (class extends controller {
         $in:[qCategory]
       }})
     } else{
-      products = await this.Product.find();
+      products = await this.Product.find().populate({
+        path: 'image categories',
+        select: 'filepath name slug'
+    })
     }
 
     this.response({
@@ -39,7 +42,9 @@ module.exports = new (class extends controller {
           });
         }
 
-        const product = await this.Product.findById(req.params.id)
+        const product = await this.Product.findById(req.params.id).populate({
+          path: 'image categories'
+        })
 
         this.response({
           res,
