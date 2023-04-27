@@ -4,11 +4,11 @@ const cors = require('cors')
 
 
 const router = require('./src/routes');
-
+const fileUpload = require('express-fileupload')
 
 
 app.use(cors()) // Use this after the variable declaration
-
+app.use(fileUpload())
 
 require('./startup/config')(app,express);
 require('./startup/db')();
