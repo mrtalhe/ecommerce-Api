@@ -89,4 +89,15 @@ Remove order
 
 View all orders
 
+// Files
+
+Add File
+
+Update File
+
+Delete File
+
+List Files
+
+viewFile
 
