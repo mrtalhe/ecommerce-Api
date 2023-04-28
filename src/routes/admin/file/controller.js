@@ -30,7 +30,7 @@ module.exports = new (class extends controller {
           size,
           mimetype,
           encoding,
-          filepath: this.slug(title),
+          filepath,
           userId: req.user._id,
         });
       });
@@ -161,7 +161,4 @@ module.exports = new (class extends controller {
     }
   }
 
-  slug(title) {
-    return title.replace(/([^۰-۹آ-یa-z0-9]|-)+/g, "-");
-  }
 })();

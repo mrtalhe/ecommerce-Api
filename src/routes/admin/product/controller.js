@@ -7,18 +7,14 @@ module.exports = new (class extends controller {
   // get All products
   async getAllProducts(req, res) {
     const qNew = req.query.new
-    const qCategory = req.query.category
+
     let products;
 
     if(qNew){
       products = await this.Product.find().sort({createdAt: -1}).limit(1)
-    } else if(qCategory){
-      products = await this.Product.find({categories: {
-        $in:[qCategory]
-      }})
     } else{
       products = await this.Product.find().populate({
-        path: 'image categories',
+        path: 'images.main main.gallery categories',
         select: 'filepath name slug'
     })
     }
@@ -43,7 +39,7 @@ module.exports = new (class extends controller {
         }
 
         const product = await this.Product.findById(req.params.id).populate({
-          path: 'image categories'
+          path: 'images.main main.gallery categories'
         })
 
         this.response({
