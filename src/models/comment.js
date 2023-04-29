@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { CommentStatus } = require("./../../types/types");
+
 const timestamp = require("mongoose-timestamp");
 
 const commentSchema = new mongoose.Schema({
@@ -14,6 +14,7 @@ const commentSchema = new mongoose.Schema({
   },
   authorId: {
     type: mongoose.Schema.Types.ObjectId,
+    ref : 'User',
     required: true,
   },
   prodId: {
@@ -39,9 +40,9 @@ const commentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  status: {
-    type: String,
-    default: CommentStatus.Pending,
+  check: {
+    type: Boolean,
+    default: false,
   },
 });
 commentSchema.plugin(timestamp);

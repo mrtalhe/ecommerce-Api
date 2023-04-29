@@ -7,6 +7,7 @@ const cartRouter = require("./cart")
 const orderRouter = require("./order")
 const categoryRouter = require("./category")
 const fileRouter = require("./file")
+const commentRouter = require("./comment")
 
 router.get(
   '/',
@@ -18,6 +19,7 @@ router.use("/cart", cartRouter)
 router.use("/order", orderRouter)
 router.use("/category", categoryRouter)
 router.use("/file", fileRouter)
+router.use("/comment", commentRouter)
 
 
 

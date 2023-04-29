@@ -1,18 +1,18 @@
 const controller = require("../controller");
-const _ = require("lodash");
-const { isValidReq } = require("./../../../utils/validate");
-
-const { default: mongoose } = require("mongoose");
 
 module.exports = new (class extends controller {
   // create comment
   async createComment(req, res) {
-    // create
+
    const newComment = new this.CommentModel({
     authorId: req.user.id,
     ...req.body
   })
+  newComment.check = false
+  if(req.user.isadmin){
+  newComment.check = true
 
+  }
    await newComment.save()
 
     this.response({

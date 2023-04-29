@@ -5,37 +5,37 @@ You can use the Ecommerce API script to set up an online store with Nodejs. The 
 <! Authentication system  >
 
 
-Registration and login of users
+- Registration and login of users
 
-Authentication of users by JsonWebToken
+- Authentication of users by JsonWebToken
 
-Encrypting users' passwords
+- Encrypting users' passwords
 
-Protected path for website administrator
+- Protected path for website administrator
 
 // Users' shopping carts
 
-Add product to cart
+- Add product to cart
 
-Update shopping cart
+- Update shopping cart
 
-Remove the shopping cart
+- Remove the shopping cart
 
-View shopping cart
+- View shopping cart
 
 // User order
 
-Make an order
+- Make an order
 
-order update
+- order update
 
-Receive user orders
+- Receive user orders
 
 // products
 
-View all products
+- View all products
 
-View product  single
+- View product  single
 
 
 <! Features of the main manager >
@@ -43,61 +43,69 @@ View product  single
 
 // User management
 
-Add user
+- Add user
 
-User update
+- User update
 
-Delete user
+- Delete user
 
-View all users
+- View all users
 
-Changing the normal user to the administrator user by the main administrator of the site
+- Changing the normal user to the administrator user by the main administrator of the site
 
 // Product management
 
-Add product
+- Add product
 
-Product update
+- Product update
 
-Remove the product
+- Remove the product
 
-View all products
+- View all products
 
-View a single product
+- View a single product
 
 // Manage categories
 
-Ability to add main category and subcategory
+- Ability to add main category and subcategory
 
-Category update
+- Category update
 
-Remove category
+- Remove category
 
-View all categories
+- View all categories
 
 // Cart
 
-View All Carts
+- View All Carts
 
 // Order
 
-Make an order
+- Make an order
 
-order update
+- order update
 
-Remove order
+- Remove order
 
-View all orders
+- View all orders
 
 // Files
 
-Add File
+- Add File
 
-Update File
+- Update File
 
-Delete File
+- Delete File
 
-List Files
+- List Files
 
-viewFile
+- viewFile
+
+// Comments
+
+- getAllComments
+
+- delete Comment
+
+- submit Comment
 
