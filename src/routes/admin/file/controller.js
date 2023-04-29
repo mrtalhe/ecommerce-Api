@@ -60,8 +60,6 @@ module.exports = new (class extends controller {
     const _id = req.params.fileId;
     const element = Object.keys(req.body);
 
-    const isValidRB = isValidReq(req.body, ["name", "userId"]);
-    if (!isValidRB) return next({ code: 400, message: "Bad request!" });
     try {
       let file = await this.FileModel.findOne({
         _id: _id,

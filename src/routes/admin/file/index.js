@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const controller = require("./controller");
 const {fsLimit,fpExist,fxLimit} = require('./../../../middlewares/upload')
-const fileUpload = require("express-fileupload");
+
+const validator = require("./validator");
 
 // create file
 router.post(
@@ -16,7 +17,8 @@ router.post(
 // update file
 router.patch(
   "/update/:fileId",
-
+  validator.updateValidator(),
+  controller.validate,
   controller.updateFile
 );
 // delete file
