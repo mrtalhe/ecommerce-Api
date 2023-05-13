@@ -63,15 +63,15 @@ module.exports = new (class extends controller {
       });
     }
     // create 
-    product = new this.Product(req.body);
+   const newproduct = new this.Product(req.body);
     // save and send response
-    await product.save();
+    await newproduct.save();
 
     this.response({
       res,
       code: 200,
       message: "the product successfuly saved",
-      data: _.pick(product, ["_id", "title", "price"]),
+      data: _.pick(newproduct, ["_id", "title", "price"]),
     });
   }
 

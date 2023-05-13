@@ -1,8 +1,8 @@
 const controller = require("../../controller");
 const _ = require("lodash");
 const { default: mongoose } = require("mongoose");
-const { genFilePath } = require("./../../../../utils/file");
-const { isValidReq } = require("./../../../../utils/validate");
+const { genFilePath } = require("./../../../../src/utils/file");
+const { isValidReq } = require("./../../../../src/utils/validate");
 const fs = require("fs");
 
 module.exports = new (class extends controller {

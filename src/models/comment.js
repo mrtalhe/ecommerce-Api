@@ -44,7 +44,7 @@ const commentSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-});
+},{strictPopulate: false, toJSON: {virtuals: true}});
 commentSchema.plugin(timestamp);
 
 commentSchema.virtual('comments', {

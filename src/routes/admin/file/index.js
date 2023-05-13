@@ -2,12 +2,13 @@ const express = require("express");
 const router = express.Router();
 const controller = require("./controller");
 const {fsLimit,fpExist,fxLimit} = require('./../../../middlewares/upload')
-
+const fileUpload = require("express-fileupload")
 const validator = require("./validator");
 
 // create file
 router.post(
   "/upload",
+
 
   fpExist,
   fxLimit(['jpg', 'jpeg', 'png', 'mp3', 'mpeg']),

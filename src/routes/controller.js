@@ -7,6 +7,7 @@ const Cart = require("../models/cart");
 const Category = require("../models/category");
 const FileModel = require("../models/file");
 const CommentModel = require("../models/comment");
+const mongoose = require('mongoose');
 
 module.exports = class {
   constructor() {
@@ -52,4 +53,7 @@ module.exports = class {
   urlImgReplice(req) {
     return req.file.path.replace(/\\/g, "/").substring(6);
   }
+
+
+
 };
