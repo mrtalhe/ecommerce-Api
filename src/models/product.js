@@ -18,6 +18,7 @@ const productSchema = new mongoose.Schema({
   size: {type: Array},
   color: {type: Array},
   price: {type: Number, required: true},
+  slug: {type: String, required: true, default: ''}
 
 });
 productSchema.plugin(timestamp);

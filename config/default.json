@@ -4,5 +4,10 @@
     "address": "mongodb://127.0.0.1:27017/ecommerceApi"
 
   },
-"jwt_key": "dfsdfff4t5j6h4j5h64564j5h645j6h45jh6"
+"jwt_key": "dfsdfff4t5j6h4j5h64564j5h645j6h45jh6",
+"zarinPal":  {
+  "ZARIN_PAY_MERCHANT": "6cded376-3063-11e9-a98e-005056a205be",
+  "PAYMENT_CALLBACK_URL": "http://localhost:3000/api/payment/checkout",
+  "ZARIN_PAY_ADDRESS": "https://api.zarinpal.com/pg/v4/payment/request.json"
+}
 }

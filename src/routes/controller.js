@@ -50,9 +50,12 @@ module.exports = class {
     });
   }
 
-  urlImgReplice(req) {
-    return req.file.path.replace(/\\/g, "/").substring(6);
+
+  slug(title) {
+    return title.replace(/([^۰-۹آ-یa-z0-9]|-)+/g, "-");
   }
+
+
 
 
 

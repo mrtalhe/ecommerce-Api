@@ -6,25 +6,31 @@ const { default: mongoose } = require("mongoose");
 module.exports = new (class extends controller {
   // get All products
   async getAllProducts(req, res) {
-    const qNew = req.query.new;
-    let products;
-
-    if (qNew) {
-      products = await this.Product.find().sort({ createdAt: -1 }).limit(1);
-    } else {
-      products = await this.Product.find()
-        .populate({
-          path: "images.main images.gallery categories",
-          select: "filepath name slug",
-        })
-        .exec();
+    const query = {};
+    if (req.query.search) query.title = new RegExp(req.query.search, "gi");
+    if (req.query.category && req.query.category != "all") {
+      let category = await this.Category.findOne({ slug: req.query.category });
+      if (category) {
+        query.categories = { $in: [category.id] };
+      }
     }
 
+    const products = await this.Product.find({ ...query })
+      .populate({
+        path: "images.main images.gallery categories",
+        select: "filepath name slug",
+      })
+      .exec();
+    const categories = await this.Category.find({ parent: null })
+      .populate("childs")
+      .exec();
     this.response({
       res,
       code: 200,
-      data: products,
+      productsData: products,
       message: "the All products",
+      categoriesData: categories,
+      CategoryMessage: "the All categories",
     });
   }
 

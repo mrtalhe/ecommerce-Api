@@ -58,7 +58,7 @@ module.exports = new (class extends controller {
       });
     }
 
-    const orders = await this.Order.find({ userId: req.params.id });
+    const orders = await this.Order.find({ userId: req.params.id }).populate("products.productId").exec()
 
     this.response({
       res,

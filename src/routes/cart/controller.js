@@ -78,7 +78,7 @@ module.exports = new (class extends controller {
       });
     }
 
-    const cart = await this.Cart.findOne({ userId: req.params.id });
+    const cart = await this.Cart.findOne({ userId: req.params.id }).populate("products.productId").exec()
     if(!cart){
       this.response({
         res,
