@@ -109,3 +109,53 @@ You can use the Ecommerce API script to set up an online store with Nodejs. The 
 
 - submit Comment
 
+// online payment
+
+After adding the product to the shopping cart, the ability to pay online is activated and by paying and confirming the transaction, the purchase is made and the user's shopping cart is transferred to the user's order list.
+
+- Payment with online payment portal
+
+- Check payment done
+
+
+
+
+
+## Program documentation
+
+To implement and use the Ecommerce API, read the documentation mentioned in this section completely and proceed according to the instructions.
+
+## Running the program on a personal system
+
+To run the program in your personal system, you must have the following software and modules installed in your system or install them:
+```
+Node.js ==> https://nodejs.org/en
+TypeScript ==> https://www.typescriptlang.org/download
+Mongodb ==> https://www.mongodb.com
+NPM ==> https://www.npmjs.com/
+```
+```
+    auto-bind: ^4.0.0,
+    axios: ^1.4.0,
+    bcrypt: ^5.0.1,
+    config: ^3.3.6,
+    cors: ^2.8.5,
+    debug: ^4.3.2,
+    express: ^4.17.1,
+    express-async-errors: ^3.1.1,
+    express-fileupload: ^1.4.0,
+    express-validator: ^6.13.0,
+    jsonwebtoken: ^8.5.1,
+    lodash: ^4.17.21,
+    mkdirp: ^0.5.5,
+    mongoose: ^6.8.3,
+    mongoose-timestamp: ^0.6.0,
+    winston: ^3.8.1
+```
+
+If you have the Nodejs program installed in your system, by running the following command in the project folder, all required modules will be installed automatically:
+
+
+```
+npm install
+```
