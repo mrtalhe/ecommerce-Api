@@ -119,19 +119,23 @@
 
 
 
-## Program documentation
 
-To implement and use the Ecommerce API, read the documentation mentioned in this section completely and proceed according to the instructions.
+## مستندات برنامه
 
-## Running the program on a personal system
+برای پیاده سازی و استفاده از Ecommerce API، مستندات ذکر شده در این قسمت را به طور کامل مطالعه کنید و طبق دستورالعمل ها پیش بروید.
 
-To run the program in your personal system, you must have the following software and modules installed in your system or install them:
+
+## اجرای برنامه بر روی سیستم شخصی
+
+برای اجرای برنامه در سیستم شخصی خود باید نرم افزارها و ماژول های زیر را در سیستم خود نصب کرده یا نصب کنید:
+
+
 ```
 Node.js ==> https://nodejs.org/en
-TypeScript ==> https://www.typescriptlang.org/download
 Mongodb ==> https://www.mongodb.com
 NPM ==> https://www.npmjs.com/
 ```
+
 ```
     auto-bind: ^4.0.0,
     axios: ^1.4.0,
@@ -151,7 +155,7 @@ NPM ==> https://www.npmjs.com/
     winston: ^3.8.1
 ```
 
-If you have the Nodejs program installed in your system, by running the following command in the project folder, all required modules will be installed automatically:
+اگر برنامه Nodejs را در سیستم خود نصب کرده باشید، با اجرای دستور زیر در پوشه پروژه، تمام ماژول های مورد نیاز به صورت خودکار نصب می شوند:
 
 
 ```
