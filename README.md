@@ -134,6 +134,8 @@
 Node.js ==> https://nodejs.org/en
 Mongodb ==> https://www.mongodb.com
 NPM ==> https://www.npmjs.com/
+NODEMON ==> npm install -g nodemon
+
 ```
 
 ```
@@ -161,3 +163,48 @@ NPM ==> https://www.npmjs.com/
 ```
 npm install
 ```
+
+## تنظیم متغیر های محلی
+
+بعد از نصب برنامه ها و ماژول های مورد نیاز وارد پوشه config بشید و اطلاعات زیر را ویرایش کنید
+
+
+```
+{
+  "name": "auth project",
+  # اسم پروژه شما
+
+  "db": {
+    "address": "mongodb://127.0.0.1:27017/ecommerceApi"
+    # آدرس اتصال به دیتابیس توجه ecommerceApi در اینجا اسم پایگاه داده شماست
+
+  },
+
+"jwt_key": "dfsdfff4t5j6h4j5h64564j5h645j6h45jh6",
+# jwt یک مقدار تصادفی برای متود لاگین
+
+"zarinPal":  {
+  "ZARIN_PAY_MERCHANT": "6cded376-3063-11e9-a98e-005056a205be",
+  "PAYMENT_CALLBACK_URL": "http://localhost:3000/api/payment/checkout",
+  "ZARIN_PAY_ADDRESS": "https://api.zarinpal.com/pg/v4/payment/request.json"
+
+  # در اینجا اطلاعات درگاه پرداخت را باید پر کنید در حال حاظر میتوانید از درگاه پرداخت زرین پال استفاده کنید
+},
+
+
+
+"PORT": 5000
+# پورت دسترسی شما به برنامه
+}
+```
+
+
+## اجرای بک اند
+
+بعد از نصب برنامه ها و ماژول های مورد نیاز و تنظیم متغیر های محیطی نوبت به اجرای اسکریپت رسیده است برای اجرا شدن از دستور زیر استفاده کنید
+
+```
+npm start
+```
+
+با این دستور برنامه شما اجرا میشود و آماده کار میباشد
