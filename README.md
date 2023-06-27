@@ -1,123 +1,121 @@
-You can use the Ecommerce API script to set up an online store with Nodejs. The Ecommerce API script is written in JavaScript language and Node.js - Mongodb - Mongoose - Express.js and other languages ​​and tools are used in it.
+  می‌توانید از اسکریپت Ecommerce API برای راه‌اندازی یک فروشگاه آنلاین با Nodejs استفاده کنید. اسکریپت Ecommerce API به زبان جاوا اسکریپت نوشته شده است و Node.js - Mongodb - Mongoose - Express.js و سایر زبان‌ها و ابزارها در آن استفاده می‌شود.
 
-
+## ویژگی‌های Ecommerce API
+اسکریپت Ecommerce API دارای اکثر ویژگی‌های یک سایت فروشگاهی کامل می‌باشد که در ادمه به شرح برخی از این ویژگی‌ها می پردازم:
  
-<! Authentication system  >
+## سیستم احراز هویت
+
+- ثبت نام و ورود کاربران
+
+- احراز هویت کاربران توسط json webtoken
+
+- مسیر محافظت شده برای مدیر وب سایت
+
+##  سبد خرید کاربران
+
+مشتریان میتوانند محصولات مورد نظر خود را به سبد خرید اضافه کنند و یا سبد خرید خود را ویرایش و حذف کنند.
+
+- افزودن محصول به سبد خرید
+
+- به روز رسانی سبد خرید
+
+- حذف سبد خرید
+
+- مشاهده سبد خرید
+
+## سفارشات کاربران 
+
+مشتریان میتوانند فهرست سفارشات خود را دریافت کرده و جزئیات هر سفارش را بررسی کنند. همچنین این فهرست توسط مدیر وبسایت نیز قابل مشاهده است.
+
+- فهرست گرفتن از سفارشات 
+
+- نمایش جزئیات سفارش
+
+## محصولات 
+
+- مشاهده همه محصولات
+
+- مشاهده یک محصول
+
+## پرداخت آنلاین
+
+پس از افزودن محصول به سبد خرید توانایی پرداخت آنلاین فعال شده و با پرداخت و تایید تراکنش، خرید انجام شده و سبد خرید کاربر به فهرست سفارشات کاربر منتقل میشود.
+
+- پرداخت با درگاه پرداخت آنلاین
+
+- بررسی پرداخت انجام شده
+
+## ویژگی های مدیر اصلی
 
 
-- Registration and login of users
 
-- Authentication of users by JsonWebToken
+## مدیریت کاربران
 
-- Encrypting users' passwords
+- افزودن کاربر
 
-- Protected path for website administrator
+- بروزرسانی کاربر
 
-// Users' shopping carts
+- حذف کاربر
 
-- Add product to cart
+- مشاهده همه کاربران
 
-- Update shopping cart
+- تغییر کاربر عادی به کاربر مدیر توسط مدیر اصلی سایت
 
-- Remove the shopping cart
+## مدیریت محصولات
 
-- View shopping cart
+- افزودن محصول
 
-// User order
+- بروزرسانی محصول
 
-- Make an order
+- حذف محصول
 
-- order update
+- مشاهده همه محصولات
 
-- Receive user orders
+- مشاهده یک محصول
 
-// products
+## مدیریت دسته بندی ها
 
-- View all products
+- امکان اضافه کردن دسته بندی اصلی و دسته بندی زیر مجموعه
 
-- View product  single
+- بروزرسانی دسته بندی
 
+- حذف دسته بندی
 
-<! Features of the main manager >
+- مشاهده همه دسته بندی ها
 
+## مدیریت سبد خرید
 
-// User management
+- مشاهده همه سبد خرید ها
 
-- Add user
+## مدیریت سفارشات 
 
-- User update
+- ساخت سفارش
 
-- Delete user
+- بروزرسانی سفارش
 
-- View all users
+- حذف سفارش
 
-- Changing the normal user to the administrator user by the main administrator of the site
+- مشاهده همه سفارش ها
 
-// Product management
+## مدیریت فایل ها
 
-- Add product
+- افزودن فایل
 
-- Product update
+- بروزرسانی فایل
 
-- Remove the product
+- حذف فایل
 
-- View all products
+- لیست فایل ها
 
-- View a single product
+- مشاهده فایل
 
-// Manage categories
+## مدیریت دیدگاه ها
 
-- Ability to add main category and subcategory
+- دریافت همه دیدگاه ها
 
-- Category update
+- حذف دیدگاه
 
-- Remove category
-
-- View all categories
-
-// Cart
-
-- View All Carts
-
-// Order
-
-- Make an order
-
-- order update
-
-- Remove order
-
-- View all orders
-
-// Files
-
-- Add File
-
-- Update File
-
-- Delete File
-
-- List Files
-
-- viewFile
-
-// Comments
-
-- getAllComments
-
-- delete Comment
-
-- submit Comment
-
-// online payment
-
-After adding the product to the shopping cart, the ability to pay online is activated and by paying and confirming the transaction, the purchase is made and the user's shopping cart is transferred to the user's order list.
-
-- Payment with online payment portal
-
-- Check payment done
-
-
+- تایید دیدگاه
 
 
 

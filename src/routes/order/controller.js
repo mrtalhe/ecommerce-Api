@@ -4,51 +4,21 @@ const _ = require("lodash");
 const { default: mongoose } = require("mongoose");
 
 module.exports = new (class extends controller {
-  // create order
-  async createOrder(req, res) {
-    // create
-    const order = new this.Order(req.body);
-    // save and send response
-    await order.save();
+  // get users orders
+  async getUserOrders(req, res, next) {
+    const orders = await this.Order.find({ userId: req.user._id });
+    if (!orders.length) return next({ code: 404, message: "No order found!" });
 
     this.response({
       res,
       code: 200,
-      message: "the order successfuly saved",
-      data: order,
+      message: "the orders",
+      data: orders,
     });
   }
 
-    // update order
-    async updateOrder(req, res) {
-      // check Object Id
-      if (!mongoose.isValidObjectId(req.params.id)) {
-        return this.response({
-          res,
-          code: 400,
-          message: "invalid object id",
-        });
-      }
-      // update process
-      const order = await this.Order.findByIdAndUpdate(
-        req.params.id,
-        { $set: { ...req.body } },
-        { new: true }
-      );
-  
-      // save and send response
-      await order.save();
-  
-      this.response({
-        res,
-        code: 200,
-        message: "the order successfuly updated",
-        data: order,
-      });
-    }
-
-  // get users orders
-  async getUserOrders(req, res) {
+  // vieworder
+  async vieworder(req, res, next) {
     // check Object Id
     if (!mongoose.isValidObjectId(req.params.id)) {
       return this.response({
@@ -58,13 +28,19 @@ module.exports = new (class extends controller {
       });
     }
 
-    const orders = await this.Order.find({ userId: req.params.id }).populate("products.productId").exec()
+    const _id = req.params.id;
+
+    const order = await this.Order.findOne({
+      _id,
+      userId: req.user._id,
+    }).populate({ path: "userId", select: "username email" });
+    if (!order) return next({ code: 404, message: "Order not found!" });
 
     this.response({
       res,
       code: 200,
-      message: "the orders",
-      data: orders,
+      message: "Order found.",
+      data: order,
     });
   }
 })();

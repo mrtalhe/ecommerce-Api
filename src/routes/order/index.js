@@ -4,24 +4,17 @@ const controller = require("./controller");
 const validator = require("./validator");
 
 
-// create product
-router.post(
-  "/create",
-  validator.createValidator(),
-  controller.validate,
-  controller.createOrder
-);
-// update product
-router.put(
-  "/:id",
-  validator.createValidator(),
-  controller.validate,
-  controller.updateOrder
-);
+
 // get user orders
 router.get(
-  "/:id",
+  "/list",
   controller.getUserOrders
+);
+
+// view an order
+router.get(
+  "/view/:id",
+  controller.vieworder
 );
 
 module.exports = router;
