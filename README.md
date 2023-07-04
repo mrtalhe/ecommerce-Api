@@ -184,7 +184,7 @@ npm install
 # jwt یک مقدار تصادفی برای متود لاگین
 
 "zarinPal":  {
-  "ZARIN_PAY_MERCHANT": "6cded376-3063-11e9-a98e-005056a205be",
+  "ZARIN_PAY_MERCHANT": "",
   "PAYMENT_CALLBACK_URL": "http://localhost:3000/api/payment/checkout",
   "ZARIN_PAY_ADDRESS": "https://api.zarinpal.com/pg/v4/payment/request.json"
 
@@ -208,3 +208,73 @@ npm start
 ```
 
 با این دستور برنامه شما اجرا میشود و آماده کار میباشد
+
+
+## نحوه ارسال ریکوئست
+
+برای ارسال ریکوست به بک اند به فرمت JSON باید طبق دستورالعمل های زیر اقدام کنید، توجه کنید بجای مقدار {{URL}} باید از آدرس سرور مورد نظر خود استفاده کنید.
+
+## ثبت نام در برنامه
+
+برای ثبت نام در برنامه به آدرس زیر با متد Post ریکوست ارسال کنید:
+
+POST: {{URL}}/api/auth/register
+
+| فیلد | نوع | توضیحات |
+| :---:  | :---:  |  ---: |
+| username* | string | نام کاربری |
+| email* | string | آدرس ایمیل کاربر |
+| password* | string | رمز عبور کاربر |
+| isadmin | boolean | فیلد تعیین سطح کاربری (پیشفرض false) |
+
+
+نمونه ریکوست:
+``` json
+{
+    "username": "Talhe",
+    "email": "talhe9990@gmail.com",
+    "password": "123445678"
+}
+```
+مقدار بازگشتی:
+
+اگر فرایند ثبت نام به صورت صحیح و درست انجام شود خروجی مقدار بازگشتی به صورت زیر میباشد:
+
+``` json
+{
+    "message": "the user successfuly registered",
+    "data": {
+        "_id": "64a450f699e30131c22aa7de",
+        "username": "Talhe",
+        "email": "talhe9930@gmail.com"
+    }
+}
+```
+
+## ورود به برنامه 
+
+برای ورود به برنامه به آدرس زیر با متد Post ریکوست ارسال کنید:
+
+POST: {{URL}}/api/auth/login
+
+نمونه ریکوست:
+``` json
+{
+    "email": "talhe9930@gmail.com",
+    "password": "123445678"
+}
+```
+
+مقدار بازگشتی:
+
+در صورتی که فرآیند ورود با موفقیت انجام شود از سمت سرور به شما یک JsonWebToken تحویل داده میشه که اسم اون x-auth-token است و برای ارسال درخواست های بعدی احراز هویت شده میتونید از این توکن استفاده کنید
+
+
+``` json
+{
+    "message": "successfuly logged in",
+    "data": {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDMyZGNmYjJiNTA3MzY1MDlmNzE4MGMiLCJpYXQiOjE2ODg0OTA2OTd9.2A4YWHWEZwL4_FDpT1RQUm71JIhts0Yv-wMzVZJn--k"
+    }
+}
+```

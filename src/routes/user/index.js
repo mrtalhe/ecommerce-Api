@@ -10,9 +10,9 @@ router.get(
 );
 
 router.get(
-  '/me',
+  '/profile',
 
-  controller.me
+  controller.profile
 );
 
 module.exports = router;
