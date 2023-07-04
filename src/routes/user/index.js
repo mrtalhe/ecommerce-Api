@@ -15,4 +15,11 @@ router.get(
   controller.profile
 );
 
+
+router.put(
+  '/update',
+
+  controller.updateProfile
+);
+
 module.exports = router;
