@@ -279,3 +279,54 @@ POST: {{URL}}/api/auth/login
 }
 ```
 
+
+## دریافت پروفایل
+
+برای دریافت پروفایل کاربر به آدرس زیر درخواست get ارسال کنید
+
+GET: {{URL}}/api/user/profile
+
+مقدار بازگشتی:
+``` json
+{
+{
+    "message": "User Profile",
+    "data": {
+        "username": "talhe",
+        "email": "talhe9930@gmail.com"
+    }
+}
+}
+```
+
+## بروزرسانی پروفایل
+
+بای بروز رسانی پروفایل کاربر به آدرس زیر با متد put ریکوست ارسال کنید:
+
+PUT: {{URL}}/api/user/update
+
+| فیلد | نوع | توضیحات |
+| :---:  | :---:  |  ---: |
+| username* | string | نام کاربری |
+| password* | string | رمز عبور کاربر |
+
+نمونه ریکوست:
+``` json
+{
+    "username": "talhe 2",
+    "password": "newpassword"
+}
+```
+
+مقدار بازگشتی:
+``` json
+{
+    "message": "User updated!",
+    "data": {
+        "username": "talhe 2",
+        "password": "$2b$10$WEEkck11beamYsQ0Y5aIYu6ZwZUKK/9iqShxbPO7QFqfZOggFNpky"
+    }
+}
+```
+
+
