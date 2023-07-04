@@ -5,7 +5,7 @@ const { PaymentState } =  require("../types/types.js");
 
 const cartSchema = new mongoose.Schema({
   userId: { type: Schema.Types.ObjectId, ref: "User" },
-  products: [
+  list: [
     {
       productId: {
         type: Schema.Types.ObjectId,
@@ -15,6 +15,11 @@ const cartSchema = new mongoose.Schema({
         type: Number,
         default: 1,
       },
+      price: {
+        type: Number,
+        required: true,
+        default: 0
+    }
     },
   ],
   payment: {

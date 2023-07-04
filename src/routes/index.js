@@ -16,7 +16,7 @@ const error = require("./../middlewares/error");
 
 router.use("/auth", authRouter);
 router.use("/order", isLoggined, orderRouter);
-router.use("/cart", cartRouter)
+router.use("/cart", isLoggined, cartRouter)
 router.use("/product", productRouter) 
 router.use("/payment", isLoggined, paymentRouter) 
 
