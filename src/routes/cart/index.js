@@ -13,16 +13,16 @@ router.post(
 );
 // update product
 router.put(
-  "/:id",
+  "/update",
   validator.updateValidator(),
   controller.validate,
   controller.updateCart
 );
 // delete product
-router.delete("/:id", controller.deleteCart);
+router.delete("/delete", controller.deleteCart);
   // view cart 
   router.get(
-    "/:id",
+    "/view",
 
     controller.viewCart
   );

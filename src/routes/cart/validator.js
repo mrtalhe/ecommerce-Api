@@ -18,7 +18,7 @@ module.exports = new (class extends controller {
     return [
 
 
-      check("productId").not().isEmpty().withMessage("product Id cant be empty"),
+      check("list").not().isEmpty().withMessage("product Id cant be empty"),
 
 
     ];

@@ -65,65 +65,48 @@ module.exports = new (class extends controller {
 
   // update cart
   async updateCart(req, res) {
-    // check Object Id
-    if (!mongoose.isValidObjectId(req.params.id)) {
-      return this.response({
-        res,
-        code: 400,
-        message: "invalid object id",
-      });
-    }
-    // update process
-    const cart = await this.Cart.findByIdAndUpdate(
-      req.params.id,
-      { $set: { ...req.body } },
-      { new: true }
-    );
 
-    // save and send response
-    await cart.save();
+    // update process
+    const oldCart = await this.Cart.findOne({ userId: req.user._id });
+    if (!oldCart)
+        return next({ code: 404, message: 'No cart found!' });
+    oldCart.list.forEach(item => {
+        req.body.list.forEach((update) => {
+            if (item.productId.equals(update.productId))
+                item.quantity = update.quantity;
+        });
+    });
+    oldCart.list = oldCart.list.filter(item => item.quantity !== 0);
+    const updated = await oldCart.save({ validateBeforeSave: true });
 
     this.response({
       res,
       code: 200,
       message: "the cart successfuly updated",
-      data: cart,
+      data: updated,
     });
   }
 
   // delete cart
   async deleteCart(req, res) {
-    // check Object Id
-    if (!mongoose.isValidObjectId(req.params.id)) {
-      return this.response({
-        res,
-        code: 400,
-        message: "invalid object id",
-      });
-    }
+
     // delete process
-    const cart = await this.Cart.findByIdAndDelete(req.params.id);
+    const cart = await this.Cart.findOneAndDelete({userId: req.user._id});
+
+    if (!cart)
+    return next({ code: 200, message: 'No cart found!' });
+
     // send response
     this.response({
       res,
       code: 200,
       message: "the cart successfuly deleted",
-      data: cart,
     });
   }
   // view cart
   async viewCart(req, res) {
-    if (!mongoose.isValidObjectId(req.params.id)) {
-      return this.response({
-        res,
-        code: 400,
-        message: "invalid object id",
-      });
-    }
 
-    const cart = await this.Cart.findOne({ userId: req.params.id })
-      .populate("products.productId")
-      .exec();
+    const cart = await this.Cart.findOne({ userId: req.user._id })
     if (!cart) {
       this.response({
         res,

@@ -331,5 +331,169 @@ PUT: {{URL}}/api/user/update
 
 #افزودن به سبد خرید
 
+برای اضافه کردن یک محصول بع سبد خرید باید شناسه محصول را با متد Post به آدرس زیر ارسال کنید:
+
+POST: {{URL}}/api/cart/create
+
+| فیلد | نوع | توضیحات |
+| :---:  | :---:  |  ---: |
+| productId* | string | شناسه محصول |
+
+نمونه ریکوست:
+``` json
+        {
+            "productId": "646b64eb38f4f6acf269ddab"
+        }
+```
+
+مقدار بازگشتی:
+``` json
+{
+    "message": "A new cart created.",
+    "data": {
+        "userId": "6432dcfb2b50736509f7180c",
+        "list": [
+            {
+                "productId": "646b64eb38f4f6acf269ddab",
+                "quantity": 1,
+                "price": 233,
+                "_id": "64a583ae0ecadbf718719621"
+            }
+        ],
+        "payment": {
+            "state": "READY",
+            "date": 1688568430754
+        },
+        "amount": 0,
+        "_id": "64a583ae0ecadbf718719620",
+        "updatedAt": "2023-07-05T14:52:30.088Z",
+        "createdAt": "2023-07-05T14:52:30.088Z",
+        "__v": 0
+    }
+}
+```
+
+نکته: با تکرار ارسال یک ریکوست تکراری فقط تعداد Quantity همان محصول در سبد خرید افزایش پیدا میکند.
+
+## بروزرسانی سبد خرید
+
+برای بروز رسانی سبد خرید به آدرس زیر با متد PUT ریکوست ارسال کنید:
+
+PUT: {{URL}}/api/cart/update
+
+| فیلد | نوع | توضیحات |
+| :---:  | :---:  |  ---: |
+| list* | array | شناسه محصول و تعداد محصول |
+
+
+نمونه ریکوست:
+``` json
+{
+
+    "list": [
+        {
+            "productId": "646b64ca38f4f6acf269dda7",
+            "quantity": 50
+        },
+                {
+            "productId": "646b64eb38f4f6acf269ddab",
+            "quantity": 100
+        }
+    ]
+
+}
+```
+
+مقدار بازگشتی:
+
+
+``` json
+{
+    "message": "the cart successfuly updated",
+    "data": {
+        "payment": {
+            "state": "READY",
+            "date": 1688569513694
+        },
+        "_id": "64a586d01261be396411c9b2",
+        "userId": "6432dcfb2b50736509f7180c",
+        "list": [
+            {
+                "productId": "646b64eb38f4f6acf269ddab",
+                "quantity": 100,
+                "price": 233,
+                "_id": "64a586d01261be396411c9b3"
+            },
+            {
+                "productId": "646b64ca38f4f6acf269dda7",
+                "quantity": 50,
+                "price": 233,
+                "_id": "64a586e21261be396411c9b9"
+            }
+        ],
+        "amount": 0,
+        "updatedAt": "2023-07-05T15:06:45.265Z",
+        "createdAt": "2023-07-05T15:05:52.393Z",
+        "__v": 1
+    }
+}
+```
+
+
+## حذف سبد خرید
+
+برای خالی کردن سبد خرید به آدرس زیر با متد Delete ریکوست ارسال کنید:
+
+DELET: {{URL}}/api/cart/delete
+
+
+مقدار بازگشتی:
+
+``` json
+{
+    "message": "the cart successfuly deleted",
+    "data": {}
+}
+```
+
+## مشاهده محتوای سبد خرید
+
+برای مشاهده محصولات افزوده شده به سبد خرید به آدرس زیر با متد Get ریکوست ارسال کنید:
+
+DELETE: {{URL}}/api/cart/view
+
+مقدار بازگشتی:
+
+``` json
+{
+    "message": "Cart found",
+    "data": {
+        "payment": {
+            "state": "READY",
+            "date": 1688570239225
+        },
+        "_id": "64a589cb69c7529dc384d85d",
+        "userId": "6432dcfb2b50736509f7180c",
+        "list": [
+            {
+                "productId": "646b64ca38f4f6acf269dda7",
+                "quantity": 1,
+                "price": 233,
+                "_id": "64a589cb69c7529dc384d85e"
+            }
+        ],
+        "amount": 0,
+        "updatedAt": "2023-07-05T15:18:35.448Z",
+        "createdAt": "2023-07-05T15:18:35.448Z",
+        "__v": 0
+    }
+}
+```
+
+
+
+
+
+
 
 
