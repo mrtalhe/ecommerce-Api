@@ -6,7 +6,6 @@ const commentSchema = new mongoose.Schema({
   name: {
     type: String,
     trim: true,
-    required: true,
   },
   email: {
     type: String,
@@ -17,7 +16,7 @@ const commentSchema = new mongoose.Schema({
     ref : 'User',
     required: true,
   },
-  prodId: {
+  productId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
@@ -28,8 +27,6 @@ const commentSchema = new mongoose.Schema({
   },
   rating: {
     type: Number,
-    min: [1, "Min number is 1"],
-    max: [5, "max number is 5"],
   },
   title: {
     type: String,

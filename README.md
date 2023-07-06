@@ -490,6 +490,144 @@ DELETE: {{URL}}/api/cart/view
 }
 ```
 
+## فهرست گیری از سفارشات
+
+برای فهرست گیری از کلیه سفارش های انجام شده به آدرس زیر با متد Get ریکوست ارسال کنید:
+
+GET: {{URL}}/api/order/list
+
+مقدار بازگشتی:
+
+``` json
+{
+    "message": "the orders",
+    "data": [
+        {
+            "payment": {
+                "authority": "A00000000000000000000000000435575690",
+                "code": 100,
+                "state": "SUCCESS",
+                "date": 1686162129294
+            },
+            "_id": "647f79a41abb3ad00910c3d1",
+            "userId": "6432dcfb2b50736509f7180c",
+            "products": [
+                {
+                    "productId": "646b64ca38f4f6acf269dda7",
+                    "quantity": 1,
+                    "price": 0,
+                    "_id": "647f78d718c399b8e445e951"
+                }
+            ],
+            "amount": 10000,
+            "updatedAt": "2023-06-06T18:23:32.198Z",
+            "createdAt": "2023-06-06T18:23:32.198Z",
+            "__v": 0
+        }
+    ]
+}
+```
+
+## مشاهده جزئیات  سفارش 
+
+برای دریافت جزئیات سفارش به آدرس زیر با متد Get ریکوست ارسال کنید:
+
+
+GET: {{GET}}/order/view/orderId
+
+نمونه ریکوست:
+
+{{URL}}/api/order/view/647f79a41abb3ad00910c3d1
+
+
+پاسخ دریافت شده:
+``` json
+{
+    "message": "Order found.",
+    "data": {
+        "payment": {
+            "authority": "A00000000000000000000000000435575690",
+            "code": 100,
+            "state": "SUCCESS",
+            "date": 1686162129294
+        },
+        "_id": "647f79a41abb3ad00910c3d1",
+        "userId": {
+            "_id": "6432dcfb2b50736509f7180c",
+            "email": "talhe9930@gmail.com",
+            "username": "talhe"
+        },
+        "products": [
+            {
+                "productId": "646b64ca38f4f6acf269dda7",
+                "quantity": 1,
+                "price": 0,
+                "_id": "647f78d718c399b8e445e951"
+            }
+        ],
+        "amount": 10000,
+        "updatedAt": "2023-06-06T18:23:32.198Z",
+        "createdAt": "2023-06-06T18:23:32.198Z",
+        "__v": 0
+    }
+}
+```
+
+## ایجاد دیدگاه
+
+برای ثبت نظر به آدرس زیر با متد Post ریکوست ارسال کنید:
+
+
+
+POST: {{URL}}/api/comment/create
+
+| فیلد | نوع | توضیحات |
+| :---:  | :---:  |  ---: |
+| productId* | ObjectId | شناسه محصول |
+| rating* | string | امتیاز محصول کاربر مجاز خواهد بود که از عدد 1 تا5 به یک محصول امتیاز دهد |
+| title* | string |  عنوان دیدگاه |
+| description* | string |  توضیحات  |
+| parent* | ObjectId |  برای پاسخ به یک دیدگاه کافیست این فیلد را اضافه کنید و شناسه آن دیدگاه را وارد کنید  |
+
+نمونه درخواست:
+``` json
+{
+    "productId": "646b64ca38f4f6acf269dda7",
+    "rating": "5",
+    "title": "yellow",
+    "description": "Yellow color suits this shirt very well"
+}
+```
+
+توجه اگر کاربر مدیر باشید دیدگاه شما بصورت خودکار تایید میشود در غیر اینصورت اگر کاربر عادی باشید دیدگاه شما باید توسط مدیر اصلی سایت تایید شود تا نمایش داده شود
+
+پاسخ دریافت شده:
+``` json
+{
+    "message": "New comment added.",
+    "data": {
+        "name": "talhe",
+        "email": "talhe9930@gmail.com",
+        "authorId": "6432dcfb2b50736509f7180c",
+        "productId": "646b64ca38f4f6acf269dda7",
+        "parent": null,
+        "rating": 5,
+        "title": "yellow",
+        "description": "Yellow color suits this shirt very well",
+        "check": true,
+        "_id": "64a6c98ad68599ed4dbcc1bd",
+        "updatedAt": "2023-07-06T14:02:50.476Z",
+        "createdAt": "2023-07-06T14:02:50.476Z",
+        "__v": 0,
+        "id": "64a6c98ad68599ed4dbcc1bd"
+    }
+}
+```
+
+
+
+
+
 
 
 

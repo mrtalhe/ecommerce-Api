@@ -34,13 +34,21 @@ module.exports = new (class extends controller {
       _id,
       userId: req.user._id,
     }).populate({ path: "userId", select: "username email" });
-    if (!order) return next({ code: 404, message: "Order not found!" });
 
-    this.response({
-      res,
-      code: 200,
-      message: "Order found.",
-      data: order,
-    });
+    if (!order) {
+      this.response({
+        res,
+        code: 404,
+        message: "Order not found!",
+
+      });
+    } else {
+      this.response({
+        res,
+        code: 200,
+        message: "Order found.",
+        data: order,
+      });
+    }
   }
 })();

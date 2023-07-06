@@ -6,8 +6,11 @@ module.exports = new (class extends controller {
 
    const newComment = new this.CommentModel({
     authorId: req.user.id,
+    email: req.user.email,
+    name: req.user.username,
     ...req.body
   })
+
   newComment.check = false
   if(req.user.isadmin){
   newComment.check = true
