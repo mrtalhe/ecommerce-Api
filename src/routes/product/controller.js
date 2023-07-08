@@ -21,17 +21,36 @@ module.exports = new (class extends controller {
         select: "filepath name slug",
       })
       .exec();
-    const categories = await this.Category.find({ parent: null })
-      .populate("childs")
-      .exec();
-    this.response({
-      res,
-      code: 200,
-      productsData: products,
-      message: "the All products",
-      categoriesData: categories,
-      CategoryMessage: "the All categories",
-    });
+
+      let productMessage;
+      if(req.query.search){
+        productMessage = "the product"
+      } else if(req.query.category){
+        productMessage = "the product"
+
+      } else {
+        productMessage = "the All products!"
+
+      }
+
+      if(products.length == 0){
+        this.response({
+          res,
+          code: 404,
+          message: "There is no product!",
+    
+        });
+      } else{
+        this.response({
+          res,
+          code: 200,
+          data: products,
+          message: productMessage,
+    
+        });
+      }
+
+
   }
 
   // get single product
@@ -44,17 +63,29 @@ module.exports = new (class extends controller {
         message: "invalid object id",
       });
     }
+    
     const product = await this.Product.findById(req.params.id)
       .populate({
         path: "images.main images.gallery categories",
       })
       .exec();
 
-    this.response({
-      res,
-      code: 200,
-      message: "the product",
-      data: product,
-    });
+      if (!product){
+        this.response({
+          res,
+          code: 404,
+          message: "No product was found!",
+
+        });
+      } else{
+        this.response({
+          res,
+          code: 200,
+          message: "the product",
+          data: product,
+        });
+      }
+
+
   }
 })();

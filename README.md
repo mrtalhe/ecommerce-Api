@@ -624,6 +624,277 @@ POST: {{URL}}/api/comment/create
 }
 ```
 
+## دریافت همه محصولات
+
+برای دریافت اطلاعات همه محصولات به این آدرس درخواست GET ارسال کنید
+
+GET {{URL}}/api/product
+
+پاسخ دریافت شده
+
+``` json
+{
+    "message": "the All products!",
+    "data": [
+        {
+            "images": {
+                "gallery": [],
+                "main": {
+                    "_id": "645fe437c45c6682f650651e",
+                    "name": "e.jpg",
+                    "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\files\\images\\2023\\5\\13\\1684005943280-9963984.jpg"
+                }
+            },
+            "_id": "64a9988b69ea51d88393fd6b",
+            "title": "Slash pants",
+            "desc": "Description of Slash pants",
+            "categories": [
+                {
+                    "_id": "6441111f8382c39faa8f7eb5",
+                    "name": "Pants",
+                    "slug": "Pants",
+                    "id": "6441111f8382c39faa8f7eb5"
+                }
+            ],
+            "size": [
+                "sm"
+            ],
+            "color": [
+                "blue"
+            ],
+            "price": 20000,
+            "slug": "-lash-pants",
+            "updatedAt": "2023-07-08T17:10:35.855Z",
+            "createdAt": "2023-07-08T17:10:35.855Z",
+            "__v": 0
+        },
+        {
+            "images": {
+                "gallery": [],
+                "main": {
+                    "_id": "645fe437c45c6682f650651e",
+                    "name": "e.jpg",
+                    "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\files\\images\\2023\\5\\13\\1684005943280-9963984.jpg"
+                }
+            },
+            "_id": "64a998c669ea51d88393fd6f",
+            "title": "t shirts",
+            "desc": "Description of t shirts",
+            "categories": [
+                {
+                    "_id": "646b647438f4f6acf269dda3",
+                    "name": "t shirts",
+                    "slug": "t-shirts",
+                    "id": "646b647438f4f6acf269dda3"
+                }
+            ],
+            "size": [
+                "sm"
+            ],
+            "color": [
+                "black"
+            ],
+            "price": 50000,
+            "slug": "t-shirts",
+            "updatedAt": "2023-07-08T17:11:34.414Z",
+            "createdAt": "2023-07-08T17:11:34.414Z",
+            "__v": 0
+        }
+    ]
+}
+```
+
+## جستجو در بین محصولات
+
+به عنوان مثال ما میخواهیم محصولی که عنوان آن Slash pants است دریافت شود
+
+GET {{URL}}/api/product؟search=Slash pants
+
+پاسخ دریافت شده:
+``` json
+{
+    "message": "the product",
+    "data": [
+        {
+            "images": {
+                "gallery": [],
+                "main": {
+                    "_id": "645fe437c45c6682f650651e",
+                    "name": "e.jpg",
+                    "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\files\\images\\2023\\5\\13\\1684005943280-9963984.jpg"
+                }
+            },
+            "_id": "64a9988b69ea51d88393fd6b",
+            "title": "Slash pants",
+            "desc": "Description of Slash pants",
+            "categories": [
+                {
+                    "_id": "6441111f8382c39faa8f7eb5",
+                    "name": "Pants",
+                    "slug": "Pants",
+                    "id": "6441111f8382c39faa8f7eb5"
+                }
+            ],
+            "size": [
+                "sm"
+            ],
+            "color": [
+                "blue"
+            ],
+            "price": 20000,
+            "slug": "-lash-pants",
+            "updatedAt": "2023-07-08T17:10:35.855Z",
+            "createdAt": "2023-07-08T17:10:35.855Z",
+            "__v": 0
+        }
+    ]
+}
+```
+
+## دریافت محصولات بر اساس دسته بندی
+
+
+برای دریافت محصولاتی که در یک دسته بندی خاص هستند به آدرس زیر درخواست GET ارسال کنید
+
+GET {{URL}}/api/productcategory=t-shirts
+
+پاسخ دریافت شده:
+
+
+``` json
+{
+    "message": "the product",
+    "data": [
+        {
+            "images": {
+                "gallery": [],
+                "main": {
+                    "_id": "645fe437c45c6682f650651e",
+                    "name": "e.jpg",
+                    "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\files\\images\\2023\\5\\13\\1684005943280-9963984.jpg"
+                }
+            },
+            "_id": "64a998c669ea51d88393fd6f",
+            "title": "t shirts",
+            "desc": "Description of t shirts",
+            "categories": [
+                {
+                    "_id": "646b647438f4f6acf269dda3",
+                    "name": "t shirts",
+                    "slug": "t-shirts",
+                    "id": "646b647438f4f6acf269dda3"
+                }
+            ],
+            "size": [
+                "sm"
+            ],
+            "color": [
+                "black"
+            ],
+            "price": 50000,
+            "slug": "t-shirts",
+            "updatedAt": "2023-07-08T17:11:34.414Z",
+            "createdAt": "2023-07-08T17:11:34.414Z",
+            "__v": 0
+        },
+        {
+            "images": {
+                "gallery": [],
+                "main": {
+                    "_id": "645fe437c45c6682f650651e",
+                    "name": "e.jpg",
+                    "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\files\\images\\2023\\5\\13\\1684005943280-9963984.jpg"
+                }
+            },
+            "_id": "64a99f36db9be9de231940b9",
+            "title": "t shirts 2",
+            "desc": "Description of t shirts 2",
+            "categories": [
+                {
+                    "_id": "646b647438f4f6acf269dda3",
+                    "name": "t shirts",
+                    "slug": "t-shirts",
+                    "id": "646b647438f4f6acf269dda3"
+                }
+            ],
+            "size": [
+                "sm"
+            ],
+            "color": [
+                "black"
+            ],
+            "price": 60000,
+            "slug": "t-shirts-2",
+            "updatedAt": "2023-07-08T17:39:02.761Z",
+            "createdAt": "2023-07-08T17:39:02.761Z",
+            "__v": 0
+        }
+    ]
+}
+```
+
+## دریافت محصول تکی
+
+برای مشاهده محصول تکی باید بصورت زیر به url درخواست GET ارسال کنید
+
+GET {{URL}}/api/product/productId
+
+نمونه 
+
+GET {{URL}}/api/product/64a9988b69ea51d88393fd6b
+
+پاسخ دریافت شده:
+
+``` json
+{
+    "message": "the product",
+    "data": {
+        "images": {
+            "gallery": [],
+            "main": {
+                "_id": "645fe437c45c6682f650651e",
+                "name": "e.jpg",
+                "encoding": "7bit",
+                "size": "29090",
+                "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\files\\images\\2023\\5\\13\\1684005943280-9963984.jpg",
+                "mimetype": "image/jpeg",
+                "md5": "c150d69e86358d94c5d0454454076abb",
+                "userId": "6432dcfb2b50736509f7180c",
+                "__v": 0
+            }
+        },
+        "_id": "64a9988b69ea51d88393fd6b",
+        "title": "Slash pants",
+        "desc": "Description of Slash pants",
+        "categories": [
+            {
+                "_id": "6441111f8382c39faa8f7eb5",
+                "name": "Pants",
+                "slug": "Pants",
+                "parent": "6436d1bdbb3fee1fde6d8802",
+                "updatedAt": "2023-04-20T10:17:03.179Z",
+                "createdAt": "2023-04-20T10:17:03.179Z",
+                "__v": 0,
+                "id": "6441111f8382c39faa8f7eb5"
+            }
+        ],
+        "size": [
+            "sm"
+        ],
+        "color": [
+            "blue"
+        ],
+        "price": 20000,
+        "slug": "-lash-pants",
+        "updatedAt": "2023-07-08T17:10:35.855Z",
+        "createdAt": "2023-07-08T17:10:35.855Z",
+        "__v": 0
+    }
+}
+```
+
+
+
 
 
 

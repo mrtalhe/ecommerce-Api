@@ -18,8 +18,8 @@ module.exports = new (class extends controller {
 
     const products = await this.Product.find({...query})
     .populate({
-        path: 'images.main main.gallery categories',
-        select: 'filepath name slug'
+      path: "images.main images.gallery categories",
+      select: "filepath name slug",
     })
     
 
@@ -43,7 +43,7 @@ module.exports = new (class extends controller {
         }
 
         const product = await this.Product.findById(req.params.id).populate({
-          path: 'images.main main.gallery categories'
+          path: "images.main images.gallery categories",
         })
 
         this.response({
