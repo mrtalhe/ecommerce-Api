@@ -13,8 +13,13 @@ module.exports = new (class extends controller {
 
     if (!oldCart) {
       const product = await this.Product.findById(req.body.productId);
+      
       if (!product)
-        return next({ code: 404, message: "No product was found!" });
+      return this.response({
+        res,
+        code: 404,
+        message: "No product was found!"
+      })
 
       const newCart = new this.Cart({
         list: [
@@ -34,7 +39,11 @@ module.exports = new (class extends controller {
       const product = await this.Product.findById(req.body.productId);
 
       if (!product)
-        return next({ code: 404, message: "No product was found!" });
+        return this.response({
+          res,
+          code: 404,
+          message: "No product was found!"
+        })
 
       oldCart.list = oldCart.list.filter((item) => {
         if (product._id.equals(item.productId)) {

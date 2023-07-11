@@ -10,7 +10,8 @@ module.exports = new (class extends controller {
     const cart = await this.Cart.findOne({ userId: req.user._id });
     if (!cart)
       return this.response({
-        code: 400,
+        code: 404,
+        res,
         message: "No cart found",
       });
 
@@ -20,9 +21,21 @@ module.exports = new (class extends controller {
       email: req.user.email,
     };
 
+    if(cart.amount <= 10000){
+      return this.response({
+        res,
+        message: "The minimum amount must be one thousand tomans",
+        code: 400
+      })
+    }
+
     const { authority, code } = await ZarinGateway(payment);
     if (code !== 100 && typeof authority !== "string")
-      return next({ code: 400, message: "Incomplete payment request!" });
+      return this.response({
+        res,
+        message: "Incomplete payment request!",
+        code: 400
+      })
 
     cart.payment = {
       authority: authority,
@@ -32,8 +45,9 @@ module.exports = new (class extends controller {
     };
     const info = await cart.save();
 
-    res.json({
-      status: 200,
+    this.response({
+      code: 200,
+      res,
       data: {
         info,
         redirect: `https://www.zarinpal.com/pg/StartPay/${cart.payment.authority}`,
@@ -52,11 +66,14 @@ module.exports = new (class extends controller {
       "payment.date": { $gte: Date.now() },
     });
     if (!cart)
-      return next({
+      return this.response({
+        res,
         code: 404,
-        message: "Invalid Payment request, no cart found!",
-      });
+        message: "Invalid Payment request, no cart found!"
+      })
+
     if (Status === "OK") {
+
       cart.payment.state = PaymentState.Success;
       const { userId, products, payment, amount } = cart;
       const newOrder = new this.Order({ userId, products, payment, amount });

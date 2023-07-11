@@ -48,5 +48,11 @@ amount: {
 });
 cartSchema.plugin(timestamp);
 
+
+cartSchema.pre('save', function () {
+  let amount = 0;
+  this.list.forEach(item => amount += item.price * item.quantity);
+  this.amount = amount;
+});
 const order = mongoose.model("Cart", cartSchema);
 module.exports = order;
