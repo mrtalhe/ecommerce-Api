@@ -79,10 +79,10 @@ module.exports = new (class extends controller {
       const newOrder = new this.Order({ userId, products, payment, amount });
       const order = await newOrder.save();
       await cart.delete();
-      res.json({ status: 200, data: order, message: "The payment is done." });
+      this.response({ code: 200,res, data: order, message: "The payment is done." });
     } else if (Status === "NOK") {
       cart.payment.state = PaymentState.Cancel;
-      res.json({ status: 200, message: "The payment is canceled." });
+      this.response({ code: 200,res, message: "The payment is canceled." });
     }
   }
 })();

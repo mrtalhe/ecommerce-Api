@@ -21,7 +21,7 @@ module.exports = new (class extends controller {
       name,
       slug: this.slug(name),
 
-      parent: parent == "none" ? null : parent,
+      parent: !parent ? null : parent,
     });
     // save and send response
     await addCategory.save();
@@ -51,7 +51,7 @@ module.exports = new (class extends controller {
       {
         $set: {
           name,
-          parent: parent == "none" ? null : parent,
+          parent: !parent ? null : parent,
           slug: this.slug(name),
         },
       },

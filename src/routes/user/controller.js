@@ -4,7 +4,8 @@ const bcrypt = require("bcrypt");
 
 module.exports = new (class extends controller {
   async dashboard(req, res) {
-    res.send("user dashboard");
+    const userOrders = await this.Order.find({ userId: req.user._id})
+    console.log(userOrders);
   }
 
   async profile(req, res) {

@@ -992,6 +992,147 @@ POST: {{URL}}/api/payment/checkout
 نکته بعد از انجام شدن پرداخت موفق سبد خرید از دیتابیس حذف میشود 
 
 
+## نکته مهم
+
+## دوستان عزیز توجه کنید امکاناتی که از این پس مشاهده میکنید فقط مختص مدیر اصلی وبسایت میباشد
+
+## افزودن دسته بندی
+
+POST: {{URL}}/api/admin/category/create
+
+| فیلد | نوع | توضیحات |
+| :---:  | :---:  |  ---: |
+| name* | string |  اسم دسته بندی |
+| parent* | ObjectId | (اختیاری) اگر مایل بودید این دسته بندی زیر مجموعه یک دسته بندی دیگر شود آیدی ان دسته بندی را وارد کنید |
+
+نمونه درخواست:
+
+``` json
+{
+    "name": "new Category"
+}
+
+```
+
+پاسخ دریافت شده:
+
+``` json
+{
+    "message": "the category successfuly saved",
+    "data": {
+        "name": "new Category",
+        "slug": "new-Category",
+        "parent": null,
+        "_id": "64b2e8059f0bd229c9be768e",
+        "updatedAt": "2023-07-15T18:40:05.263Z",
+        "createdAt": "2023-07-15T18:40:05.263Z",
+        "__v": 0,
+        "id": "64b2e8059f0bd229c9be768e"
+    }
+}
+```
+
+نکته مهم اگر خواستید این دسته بندی زیر مجموعه یک دسته بندی دیگر شود کافی است به درخواست خود فیلد parent را اضافه کنید و آیدی آن دسته بندی را قرار دهید
+
+
+## بروزرسانی دسته بندی
+
+POST: {{URL}}/api/admin/category/64b2e3be8936f0ca5aa6d777
+
+PUT: {{URL}}/api/admin/category/categoryId
+
+نمونه درخواست ارسال شده:
+
+``` json
+{
+    "name": "name updated"
+}
+```
+
+پاسخ دریافتی:
+
+``` json
+{
+    "message": "the category successfuly updated",
+    "data": {
+        "_id": "64b2e8059f0bd229c9be768e",
+        "name": "name updated",
+        "slug": "name-updated",
+        "parent": null,
+        "updatedAt": "2023-07-15T18:41:20.350Z",
+        "createdAt": "2023-07-15T18:40:05.263Z",
+        "__v": 0,
+        "id": "64b2e8059f0bd229c9be768e"
+    }
+}
+```
+
+## حذف دسته بندی
+
+ِDELETE: {{URL}}/api/admin/category/64b2e8059f0bd229c9be768e
+
+ِDELETE: {{URL}}/api/admin/category/categoryId
+
+پاسخ دریافتی:
+
+``` json
+{
+    "message": "the category successfuly deleted",
+    "data": {}
+}
+```
+
+نکته اگر یک دسته بندی اصلی را پاک کنید دسته بندی های زیر مجموعه آن هم حذف خواهند شد
+
+## دریافت همه دسته بندی ها
+
+GET: {{URL}}/api/admin/category
+
+پاسخ دریافتی:
+
+``` json
+{
+    "message": "the All Categories",
+    "data": [
+        {
+            "_id": "64b2e9459f0bd229c9be7698",
+            "name": "category one",
+            "slug": "category-one",
+            "parent": null,
+            "updatedAt": "2023-07-15T18:45:25.250Z",
+            "createdAt": "2023-07-15T18:45:25.250Z",
+            "__v": 0,
+            "id": "64b2e9459f0bd229c9be7698"
+        },
+        {
+            "_id": "64b2e94b9f0bd229c9be769c",
+            "name": "category two",
+            "slug": "category-two",
+            "parent": null,
+            "updatedAt": "2023-07-15T18:45:31.688Z",
+            "createdAt": "2023-07-15T18:45:31.688Z",
+            "__v": 0,
+            "id": "64b2e94b9f0bd229c9be769c"
+        }
+    ]
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
