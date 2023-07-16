@@ -996,6 +996,12 @@ POST: {{URL}}/api/payment/checkout
 
 ## دوستان عزیز توجه کنید امکاناتی که از این پس مشاهده میکنید فقط مختص مدیر اصلی وبسایت میباشد
 
+
+
+
+
+## مدیریت دیدگاه ها
+
 ## افزودن دسته بندی
 
 POST: {{URL}}/api/admin/category/create
@@ -1117,6 +1123,140 @@ GET: {{URL}}/api/admin/category
     ]
 }
 ```
+
+## مدیریت دیدگاه ها
+
+## دریافت همه دیدگاه ها
+
+برای مشاهده همه دیدگاه ها به آدرس زیر درخواست GET ارسال کنید
+
+GET: {{URL}}/api/api/admin/comment
+
+پاسخ دریافتی:
+
+
+``` json
+{
+    "message": "the All Comments",
+    "data": [
+        {
+            "_id": "64a6c98ad68599ed4dbcc1bd",
+            "name": "talhe",
+            "email": "talhe9930@gmail.com",
+            "authorId": {
+                "_id": "6432dcfb2b50736509f7180c"
+            },
+            "productId": "646b64ca38f4f6acf269dda7",
+            "parent": null,
+            "rating": 5,
+            "title": "yellow",
+            "description": "Yellow color suits this shirt very well",
+            "check": true,
+            "updatedAt": "2023-07-06T14:02:50.476Z",
+            "createdAt": "2023-07-06T14:02:50.476Z",
+            "__v": 0,
+            "id": "64a6c98ad68599ed4dbcc1bd"
+        },
+        {
+            "_id": "64b43374a3d11ba96fa36bce",
+            "name": "talhe",
+            "email": "talhe9930@gmail.com",
+            "authorId": {
+                "_id": "6432dcfb2b50736509f7180c"
+            },
+            "productId": "64a9988b69ea51d88393fd6b",
+            "parent": null,
+            "rating": 5,
+            "title": "The price is right",
+            "description": "The price of this product is much better than other products",
+            "check": true,
+            "updatedAt": "2023-07-16T18:14:12.232Z",
+            "createdAt": "2023-07-16T18:14:12.232Z",
+            "__v": 0,
+            "id": "64b43374a3d11ba96fa36bce"
+        }
+    ]
+}
+```
+
+## حذف دیدگاه 
+
+ٍِDELETE: {{URL}}/api/api/admin/comment/64b43374a3d11ba96fa36bce
+
+نکته بعد از حذف یک  دیدگاه اگر دیدگاه زیر مجموعه ای داشته باشد هم حذف خواهند شد
+
+ٍِDELETE: {{URL}}/api/api/admin/comment/commentId
+
+پاسخ دریافتی:
+
+``` json
+{
+    "message": "The comment was deleted! ",
+    "data": {
+        "_id": "64b43374a3d11ba96fa36bce",
+        "name": "talhe",
+        "email": "talhe9930@gmail.com",
+        "authorId": "6432dcfb2b50736509f7180c",
+        "productId": "64a9988b69ea51d88393fd6b",
+        "parent": null,
+        "rating": 5,
+        "title": "The price is right",
+        "description": "The price of this product is much better than other products",
+        "check": true,
+        "updatedAt": "2023-07-16T18:14:12.232Z",
+        "createdAt": "2023-07-16T18:14:12.232Z",
+        "__v": 0,
+        "comments": [],
+        "id": "64b43374a3d11ba96fa36bce"
+    }
+}
+```
+
+## تایید یک دیدگاه از طرف مدیر سایت برای اینکه قابل مشاهده در سایت شود
+
+PUT: {{URL}}/api/api/admin/comment/64b43374a3d11ba96fa36bce/approve
+
+
+PUT: {{URL}}/api/api/admin/comment/commentId/approve
+
+پاسخ دریافتی:
+
+
+``` json
+{
+    "message": "The comment Submited! ",
+    "data": {
+        "_id": "64a6c98ad68599ed4dbcc1bd",
+        "name": "talhe",
+        "email": "talhe9930@gmail.com",
+        "authorId": "6432dcfb2b50736509f7180c",
+        "productId": "646b64ca38f4f6acf269dda7",
+        "parent": null,
+        "rating": 5,
+        "title": "yellow",
+        "description": "Yellow color suits this shirt very well",
+        "check": true,
+        "updatedAt": "2023-07-16T18:27:42.668Z",
+        "createdAt": "2023-07-06T14:02:50.476Z",
+        "__v": 0,
+        "comments": [],
+        "id": "64a6c98ad68599ed4dbcc1bd"
+    }
+}
+```
+
+توجه کنید بعد از ارسال درخواست به این آدرس فیلد check به true تغییر میکند و از طرف مدیر سایت تایید میشود
+
+
+
+
+
+
+
+
+
+
+
 
 
 
