@@ -1248,6 +1248,194 @@ PUT: {{URL}}/api/api/admin/comment/commentId/approve
 توجه کنید بعد از ارسال درخواست به این آدرس فیلد check به true تغییر میکند و از طرف مدیر سایت تایید میشود
 
 
+## مدیریت فایل ها
+
+## افزودن فایل
+
+
+برای افزودن فایل به آدرس زیر درخواست POST ارسال کنید
+
+POST: {{URL}}/api/api/admin/file/upload
+
+
+پاسخ دریافتی:
+
+``` json
+{
+    "message": "The File Successfully Added!",
+    "data": [
+        {
+            "name": "e.jpg",
+            "encoding": "7bit",
+            "size": "29090",
+            "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\src\\files\\images\\2023\\7\\17\\1689601877301-2383559.jpg",
+            "mimetype": "image/jpeg",
+            "md5": "c150d69e86358d94c5d0454454076abb",
+            "userId": "6432dcfb2b50736509f7180c",
+            "_id": "64b54755937ea0ffaa2e0525",
+            "__v": 0
+        }
+    ]
+}
+```
+
+بعد از آپلود فایل یک پوشه به نام files در پوشه src ساخته خواهد شد سپس فایل در این پوشه ذخیره میشود
+
+نکته حداکثر سایز فایل آپلودی باید 2 مگابایت باشد
+
+همچنین فقط پسوند های mp3 , jpeg, png , jpg, mpeg قابل آپلود هستند
+
+
+## بروزرسانی اطلاعات فایل
+
+PATCH: {{URL}}/api/admin/file/update/:fileId
+
+
+| فیلد | نوع | توضیحات |
+| :---:  | :---:  |  ---: |
+| name* | string | نام جدید فایل  | 
+| userId* | ObjectId | شناسه مالک جدید   | 
+
+PATCH: {{URL}}/api/admin/file/update/64b54755937ea0ffaa2e0525
+
+نمونه درخواست ارسال شده:
+
+``` json
+{
+    "name": "new name",
+    "userId": "64a450f699e30131c22aa7de"
+}
+```
+
+پاسخ دریافتی:
+
+``` json
+{
+    "message": "file Updated! ",
+    "data": {
+        "_id": "64b54755937ea0ffaa2e0525",
+        "name": "new name",
+        "encoding": "7bit",
+        "size": "29090",
+        "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\src\\files\\images\\2023\\7\\17\\1689601877301-2383559.jpg",
+        "mimetype": "image/jpeg",
+        "md5": "c150d69e86358d94c5d0454454076abb",
+        "userId": "64a450f699e30131c22aa7de",
+        "__v": 0,
+        "updatedAt": "2023-07-17T14:00:47.734Z",
+        "createdAt": "2023-07-17T14:00:47.734Z"
+    }
+}
+```
+
+## حذف یک فایل
+
+برای حذف یک فایل باید به آدرس زیر با متد Delete درخواست ارسال کنید:
+
+DELETE: {{URL}}/api/admin/file/delete/:fileId
+
+DELETE: {{URL}}/api/admin/file/delete/645fe437c45c6682f650651e
+
+پاسخ دریافتی:
+
+``` json
+{
+    "message": "file Deleted! ",
+    "data": {
+        "_id": "64b5376c4dfa8b92212cceed",
+        "name": "e.jpg",
+        "encoding": "7bit",
+        "size": "29090",
+        "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\src\\files\\images\\2023\\7\\17\\1689597804846-8619500.jpg",
+        "mimetype": "image/jpeg",
+        "md5": "c150d69e86358d94c5d0454454076abb",
+        "userId": "6432dcfb2b50736509f7180c",
+        "__v": 0
+    }
+}
+```
+
+بعد دریافت پاسخ از سمت سرور اطلاعات فایل از دیتابیس حذف میشود همچنین فایل از پوشه files حذف میشود
+
+## لیست فایل ها
+
+برای مشاهده فایل های ساخته شده توسط مدیر سایت به آدرس زیر درخواست GET ارسال کنید
+
+GET: {{URL}}/api/admin/file/list
+
+پاسخ دریافتی:
+
+
+``` json
+{
+    "message": "The All Files. ",
+    "data": [
+        {
+            "_id": "64b54755937ea0ffaa2e0525",
+            "name": "new name",
+            "encoding": "7bit",
+            "size": "29090",
+            "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\src\\files\\images\\2023\\7\\17\\1689601877301-2383559.jpg",
+            "mimetype": "image/jpeg",
+            "md5": "c150d69e86358d94c5d0454454076abb",
+            "userId": "6432dcfb2b50736509f7180c",
+            "__v": 0,
+            "createdAt": "2023-07-17T14:00:47.734Z",
+            "updatedAt": "2023-07-17T14:00:47.734Z"
+        },
+        {
+            "_id": "64b54b6d0e8383ad48270568",
+            "name": "wp11266119.jpg",
+            "encoding": "7bit",
+            "size": "598165",
+            "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\src\\files\\images\\2023\\7\\17\\1689602925181-4339100.jpg",
+            "mimetype": "image/jpeg",
+            "md5": "4c040d78de5435815bb3b50bf7bf6483",
+            "userId": "6432dcfb2b50736509f7180c",
+            "__v": 0
+        }
+    ]
+}
+```
+
+## مشاهده فایل
+
+برای مشاهده یک فایل به آدرس  زیر درخواست GET ارسال کنید
+
+GET: {{URL}}/api/admin/file/view/fileId
+
+GET: {{URL}}/api/admin/file/view/644a78aea7fac85d554
+
+پاسخ دریافتی:
+
+``` json
+{
+    "message": "the file! ",
+    "data": {
+        "_id": "64b54755937ea0ffaa2e0525",
+        "name": "new name",
+        "encoding": "7bit",
+        "size": "29090",
+        "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\src\\files\\images\\2023\\7\\17\\1689601877301-2383559.jpg",
+        "mimetype": "image/jpeg",
+        "md5": "c150d69e86358d94c5d0454454076abb",
+        "userId": "6432dcfb2b50736509f7180c",
+        "__v": 0,
+        "createdAt": "2023-07-17T14:00:47.734Z",
+        "updatedAt": "2023-07-17T14:00:47.734Z"
+    }
+}
+```
+
+
+
+
+
+
+
+
+
+
 
 
 

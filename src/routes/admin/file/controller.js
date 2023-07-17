@@ -17,13 +17,10 @@ module.exports = new (class extends controller {
         const filepath = genFilePath(name, mimetype);
         mv(filepath, (err) => {
           if (err) {
-            return next({
-              code: 500,
-              message: `Error while wrting file to disk! ${name}`,
-            });
+            return this.response({ code: 500,res, message: `Error while wrting file to disk! ${name}` });
           }
+          
         });
-
         items.push({
           name,
           md5,
@@ -36,14 +33,11 @@ module.exports = new (class extends controller {
       });
       const newFiles = await this.FileModel.insertMany(items);
 
-      this.response({
-        res,
-        code: 200,
-        message: "the file created",
-        data: newFiles,
-      });
+      this.response({ code: 200,res, data: newFiles,message: "The File Successfully Added!" });
+
     } catch (error) {
       next(error);
+
     }
   }
 
@@ -146,12 +140,12 @@ module.exports = new (class extends controller {
     try {
       let files = await this.FileModel.find({ userId: req.user._id });
       if (!files.length)
-        return next({ code: 404, message: "No file was found!" });
+        return this.response({res, code: 404, message: "No file was found!" });
 
       this.response({
         res,
         code: 200,
-        message: "Files retrieved. ",
+        message: "The All Files. ",
         data: files,
       });
     } catch (e) {

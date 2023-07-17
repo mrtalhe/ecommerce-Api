@@ -8,7 +8,7 @@ const fileUpload = require('express-fileupload')
 
 
 app.use(cors()) // Use this after the variable declaration
-app.use(fileUpload())
+
 
 require('./startup/config')(app,express);
 require('./startup/db')();
@@ -19,6 +19,11 @@ require('./startup/logging')();
 
 
 app.use('/api', router);
+
+app.use(fileUpload({
+    useTempFiles : true,
+    tempFileDir : '/tmp/'
+}));
 
 app.get("/logout", (req,res) => {    
     res.status(200).send("user Logged out")

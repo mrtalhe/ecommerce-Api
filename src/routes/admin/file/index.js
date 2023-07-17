@@ -9,11 +9,15 @@ const validator = require("./validator");
 router.post(
   "/upload",
 
+  fileUpload({ createParentPath: true }),
 
   fpExist,
   fxLimit(['jpg', 'jpeg', 'png', 'mp3', 'mpeg']),
-  fsLimit(1 * 1024 * 1024),
-  controller.addFile
+  fsLimit(2 * 1024 * 1024),
+
+  controller.addFile,
+
+
 );
 // update file
 router.patch(

@@ -8,12 +8,8 @@ function genFilePath(name, mimetype) {
     const datePath = currDate.getFullYear() + '/' + (currDate.getMonth() + 1) + '/' + currDate.getDate();
     const randName = Math.floor(Math.random() * 9999999);
     const fileName = Date.now() + '-' + randName + name.substring(name.lastIndexOf('.'), name.length);
-    const dirPath = path.join(myDirname, '../files/' + mimetype.split('/')[0] + 's/' + datePath + '/');
-    // ایجاد پوشه اگر وجود ندارد
-    if (!fs.existsSync(dirPath)) {
-        fs.mkdirSync(dirPath, { recursive: true });
-    }
-    return path.join(dirPath, fileName);
+    return path.join(myDirname, `../files/${mimetype.split('/')[0]}s/${datePath}/`, fileName);
+
 };
 
 module.exports = {
