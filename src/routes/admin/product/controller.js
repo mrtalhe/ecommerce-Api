@@ -15,6 +15,17 @@ module.exports = new (class extends controller {
       }
     }
 
+    let productMessage;
+    if(req.query.search){
+      productMessage = "the product"
+    } else if(req.query.category){
+      productMessage = "the product"
+
+    } else {
+      productMessage = "the All products!"
+
+    }
+
 
     const products = await this.Product.find({...query})
     .populate({
@@ -27,7 +38,7 @@ module.exports = new (class extends controller {
       res,
       code: 200,
       data: products,
-      message: "the All products",
+      message: productMessage,
     });
   }
 
@@ -71,7 +82,8 @@ module.exports = new (class extends controller {
    const newproduct = new this.Product({
     title,
     ...req.body,
-    slug: this.slug(title)
+    slug: this.slug(title),
+    owner: req.user._id
    });
     // save and send response
     await newproduct.save();
@@ -80,7 +92,7 @@ module.exports = new (class extends controller {
       res,
       code: 200,
       message: "the product successfuly saved",
-      data: _.pick(newproduct, ["_id", "title", "price"]),
+      data: newproduct,
     });
   }
 
@@ -95,7 +107,9 @@ module.exports = new (class extends controller {
       });
     }
     // update process
-  const product = await this.Product.findByIdAndUpdate(req.params.id, { $set: { ...req.body } }, {new: true});
+    const {title} = req.body
+
+    const product = await this.Product.findByIdAndUpdate(req.params.id, { $set: { ...req.body,    slug: this.slug(title)  } }, {new: true});
 
     // save and send response
    await product.save()
@@ -104,7 +118,7 @@ module.exports = new (class extends controller {
       res,
       code: 200,
       message: "the product successfuly updated",
-      data: _.pick(product, ["_id", "title"]),
+      data: product,
     });
   }
 

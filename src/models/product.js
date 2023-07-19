@@ -3,7 +3,8 @@ const timestamp = require('mongoose-timestamp');
 
 const productSchema = new mongoose.Schema({
   title: { type: String, unique: true, required: true},
-  desc: { type: String, required: true},
+  description: { type: String, required: true},
+  mindescription: { type: String, required: true},
   images: {
     main: {
         type: mongoose.Schema.Types.ObjectId,
@@ -18,7 +19,11 @@ const productSchema = new mongoose.Schema({
   size: {type: Array},
   color: {type: Array},
   price: {type: Number, required: true},
-  slug: {type: String, required: true, default: ''}
+  slug: {type: String, required: true, default: ''},
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+}
 
 });
 productSchema.plugin(timestamp);

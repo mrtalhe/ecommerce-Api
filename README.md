@@ -1427,6 +1427,508 @@ GET: {{URL}}/api/admin/file/view/644a78aea7fac85d554
 }
 ```
 
+## مدیریت محصولات
+
+## افزودن محصول
+
+برای افزودن محصول به وبسایت به آدرس زیر درخواست POST ارسال کنید
+
+POST: {{URL}}/api/admin/product/create
+
+| فیلد | نوع | توضیحات |
+| :---:  | :---:  |  ---: |
+| title* | string | نام محصول   | 
+| description* | string |   توضیحات محصول   | 
+| mindescription* | string |   توضیحات مختصر محصول   | 
+| images* | objectId |    main شامل تصویر اصلی میباشد و gallery شامل گالری تصاویر میباشد   | 
+| categories* | objectId |   دسته بندی محصول   | 
+| size* | string |  سایز محصول   | 
+| color* | string |  رنگ محصول   | 
+| price* | string |  قیمت محصول محصول   | 
+
+نمونه درخواست ارسال شده:
+
+``` json
+{
+    "title": "node Js course",
+    "description": "Node.js® is an open-source, cross-platform JavaScript runtime environment.",
+    "mindescription": "Node.js is a JavaScript runtime",
+    "images": {
+        "main": "64b54755937ea0ffaa2e0525",
+        "gallery": [
+            "64b7fb1b3e474c037fb428cf",
+            "64b7fb0b3e474c037fb428cc"
+        ]
+    },
+    "categories": "64b2e94b9f0bd229c9be769c",
+    "size": "sm",
+    "color": "green",
+    "price": "10000"
+}
+```
+
+پاسخ دریافتی:
+
+``` json
+{
+    "message": "the product successfuly saved",
+    "data": {
+        "title": "node Js course",
+        "description": "Node.js® is an open-source, cross-platform JavaScript runtime environment.",
+        "mindescription": "Node.js is a JavaScript runtime",
+        "images": {
+            "main": "64b54755937ea0ffaa2e0525",
+            "gallery": [
+                "64b7fb1b3e474c037fb428cf",
+                "64b7fb0b3e474c037fb428cc"
+            ]
+        },
+        "categories": [
+            "64b2e94b9f0bd229c9be769c"
+        ],
+        "size": [
+            "sm"
+        ],
+        "color": [
+            "green"
+        ],
+        "price": 10000,
+        "slug": "node-s-course",
+        "owner": "6432dcfb2b50736509f7180c",
+        "_id": "64b80ce92798792c74a79382",
+        "updatedAt": "2023-07-19T16:18:49.934Z",
+        "createdAt": "2023-07-19T16:18:49.934Z",
+        "__v": 0
+    }
+}
+```
+
+## بروزرسانی محصول
+
+برای بروزرسانی محصول  به آدرس زیر درخواست PUT ارسال کنید
+
+PUT: {{URL}}/api/admin/product/:productId
+
+| فیلد | نوع | توضیحات |
+| :---:  | :---:  |  ---: |
+| title* | string | نام محصول   | 
+| description* | string |   توضیحات محصول   | 
+| mindescription* | string |   توضیحات مختصر محصول   | 
+| images* | objectId |    main شامل تصویر اصلی میباشد و gallery شامل گالری تصاویر میباشد   | 
+| categories* | objectId |   دسته بندی محصول   | 
+| size* | string |  سایز محصول   | 
+| color* | string |  رنگ محصول   | 
+| price* | string |  قیمت محصول محصول   | 
+| owner* | string |  شناسه مالک  | محصول بصورت پیش فرض شناسه مالک وبسایت است  | 
+
+
+
+نمونه درخواست ارسال شده:
+
+PUT: {{URL}}/api/admin/product/64b7fb593e474c037fb428d3
+
+
+``` json
+{
+    "title": "node Js course updated",
+    "description": "Node.js® is an open-source, cross-platform JavaScript runtime environment.",
+    "mindescription": "Node.js is a JavaScript runtime",
+    "images": {
+        "main": "64b54755937ea0ffaa2e0525",
+        "gallery": [
+            "64b7fb1b3e474c037fb428cf",
+            "64b7fb0b3e474c037fb428cc"
+        ]
+    },
+    "categories": "64b2e94b9f0bd229c9be769c",
+    "size": "sm",
+    "color": "green",
+    "price": "50000",
+    "owner": "6436767e1f76bd45c30117c1"
+}
+```
+
+پاسخ دریافتی:
+
+``` json
+{
+    "message": "the product successfuly updated",
+    "data": {
+        "images": {
+            "main": "64b54755937ea0ffaa2e0525",
+            "gallery": [
+                "64b7fb1b3e474c037fb428cf",
+                "64b7fb0b3e474c037fb428cc"
+            ]
+        },
+        "_id": "64b80ce92798792c74a79382",
+        "title": "node Js course updated",
+        "description": "Node.js® is an open-source, cross-platform JavaScript runtime environment.",
+        "mindescription": "Node.js is a JavaScript runtime",
+        "categories": [
+            "64b2e94b9f0bd229c9be769c"
+        ],
+        "size": [
+            "sm"
+        ],
+        "color": [
+            "green"
+        ],
+        "price": 50000,
+        "slug": "node-s-course-updated",
+        "owner": "6436767e1f76bd45c30117c1",
+        "updatedAt": "2023-07-19T16:28:40.543Z",
+        "createdAt": "2023-07-19T16:18:49.934Z",
+        "__v": 0
+    }
+}
+```
+
+## حذف محصول
+
+برای حذف یک محصول به آدرس زیر درخواست DELETE ارسال کنید
+
+DELETE: {{URL}}/api/admin/product/64b80ce92798792c74a79382
+
+DELETE: {{URL}}/api/admin/product/:productId
+
+پاسخ دریافتی:
+
+``` json
+{
+    "message": "the product successfuly deleted",
+    "data": {
+        "_id": "64b80ce92798792c74a79382",
+        "title": "node Js course updated"
+    }
+}
+```
+
+## دریافت یک محصول
+
+برای مشاهده اطلاعات یک محصول به آدرس زیر درخواست GET ارسال کنید
+
+GET: {{URL}}/api/admin/product/64b7fb593e474c037fb428d3
+
+GET: {{URL}}/api/admin/product/:productId
+
+پاسخ دریافتی:
+
+``` json
+{
+    "message": "the product",
+    "data": {
+        "images": {
+            "main": {
+                "_id": "64b54755937ea0ffaa2e0525",
+                "name": "new name",
+                "encoding": "7bit",
+                "size": "29090",
+                "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\src\\files\\images\\2023\\7\\17\\1689601877301-2383559.jpg",
+                "mimetype": "image/jpeg",
+                "md5": "c150d69e86358d94c5d0454454076abb",
+                "userId": "6432dcfb2b50736509f7180c",
+                "__v": 0,
+                "createdAt": "2023-07-17T14:00:47.734Z",
+                "updatedAt": "2023-07-17T14:00:47.734Z"
+            },
+            "gallery": [
+                {
+                    "_id": "64b7fb1b3e474c037fb428cf",
+                    "name": "wp11266119.jpg",
+                    "encoding": "7bit",
+                    "size": "598165",
+                    "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\src\\files\\images\\2023\\7\\19\\1689778971586-203953.jpg",
+                    "mimetype": "image/jpeg",
+                    "md5": "4c040d78de5435815bb3b50bf7bf6483",
+                    "userId": "6432dcfb2b50736509f7180c",
+                    "__v": 0
+                },
+                {
+                    "_id": "64b7fb0b3e474c037fb428cc",
+                    "name": "e.jpg",
+                    "encoding": "7bit",
+                    "size": "29090",
+                    "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\src\\files\\images\\2023\\7\\19\\1689778955688-4330658.jpg",
+                    "mimetype": "image/jpeg",
+                    "md5": "c150d69e86358d94c5d0454454076abb",
+                    "userId": "6432dcfb2b50736509f7180c",
+                    "__v": 0
+                }
+            ]
+        },
+        "_id": "64b7fb593e474c037fb428d3",
+        "title": "node Js course updated 2",
+        "description": "Node.js® is an open-source, cross-platform JavaScript runtime environment.",
+        "mindescription": "Node.js is a JavaScript runtime",
+        "categories": [
+            {
+                "_id": "64b2e94b9f0bd229c9be769c",
+                "name": "category two",
+                "slug": "category-two",
+                "parent": null,
+                "updatedAt": "2023-07-15T18:45:31.688Z",
+                "createdAt": "2023-07-15T18:45:31.688Z",
+                "__v": 0,
+                "id": "64b2e94b9f0bd229c9be769c"
+            }
+        ],
+        "size": [
+            "sm"
+        ],
+        "color": [
+            "green"
+        ],
+        "price": 50000,
+        "slug": "node-s-course-updated-2",
+        "updatedAt": "2023-07-19T16:17:36.031Z",
+        "createdAt": "2023-07-19T15:03:53.386Z",
+        "__v": 0
+    }
+}
+```
+
+## مشاهده لیست همه محصولات
+
+برای دریافت لیست همه محصولات به آدرس زیر درخواست GET ارسال کنید
+
+``` json
+{
+    "message": "the All products",
+    "data": [
+        {
+            "images": {
+                "main": {
+                    "_id": "64b54755937ea0ffaa2e0525",
+                    "name": "new name",
+                    "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\src\\files\\images\\2023\\7\\17\\1689601877301-2383559.jpg"
+                },
+                "gallery": [
+                    {
+                        "_id": "64b7fb1b3e474c037fb428cf",
+                        "name": "wp11266119.jpg",
+                        "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\src\\files\\images\\2023\\7\\19\\1689778971586-203953.jpg"
+                    },
+                    {
+                        "_id": "64b7fb0b3e474c037fb428cc",
+                        "name": "e.jpg",
+                        "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\src\\files\\images\\2023\\7\\19\\1689778955688-4330658.jpg"
+                    }
+                ]
+            },
+            "_id": "64b812fe9f218256148bc2b4",
+            "title": "node Js course",
+            "description": "Node.js® is an open-source, cross-platform JavaScript runtime environment.",
+            "mindescription": "Node.js is a JavaScript runtime",
+            "categories": [
+                {
+                    "_id": "64b2e94b9f0bd229c9be769c",
+                    "name": "category two",
+                    "slug": "category-two",
+                    "id": "64b2e94b9f0bd229c9be769c"
+                }
+            ],
+            "size": [
+                "sm"
+            ],
+            "color": [
+                "green"
+            ],
+            "price": 10000,
+            "slug": "node-s-course",
+            "owner": "6432dcfb2b50736509f7180c",
+            "updatedAt": "2023-07-19T16:44:46.909Z",
+            "createdAt": "2023-07-19T16:44:46.909Z",
+            "__v": 0
+        },
+        {
+            "images": {
+                "main": {
+                    "_id": "64b54755937ea0ffaa2e0525",
+                    "name": "new name",
+                    "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\src\\files\\images\\2023\\7\\17\\1689601877301-2383559.jpg"
+                },
+                "gallery": [
+                    {
+                        "_id": "64b7fb1b3e474c037fb428cf",
+                        "name": "wp11266119.jpg",
+                        "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\src\\files\\images\\2023\\7\\19\\1689778971586-203953.jpg"
+                    },
+                    {
+                        "_id": "64b7fb0b3e474c037fb428cc",
+                        "name": "e.jpg",
+                        "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\src\\files\\images\\2023\\7\\19\\1689778955688-4330658.jpg"
+                    }
+                ]
+            },
+            "_id": "64b813729f218256148bc2bc",
+            "title": "react js course",
+            "description": "The library for web and native user interfaces.",
+            "mindescription": "React.js is a JavaScript library",
+            "categories": [
+                {
+                    "_id": "64b2e94b9f0bd229c9be769c",
+                    "name": "category two",
+                    "slug": "category-two",
+                    "id": "64b2e94b9f0bd229c9be769c"
+                }
+            ],
+            "size": [
+                "sm"
+            ],
+            "color": [
+                "green"
+            ],
+            "price": 50000,
+            "slug": "react-js-course",
+            "owner": "6432dcfb2b50736509f7180c",
+            "updatedAt": "2023-07-19T16:46:42.954Z",
+            "createdAt": "2023-07-19T16:46:42.954Z",
+            "__v": 0
+        }
+    ]
+}
+```
+
+برای دریافت یک محصول در یک دسته بندی مشخص بصورت زیر میتوانید یک درخواست ارسال کنید
+
+
+GET: {{URL}}/api/admin/product?category=category-one
+
+
+
+
+GET: {{URL}}/api/admin/product?category=categoryName 
+
+به جای categoryName اسم دسته بندی خود را وارد کنید
+
+
+در پاسخ به ما محصولاتی را نشان میدهد که در دسته بندی categoty-one قرار دارند
+
+پاسخ دریافتی:
+
+
+``` json
+{
+    "message": "the product",
+    "data": [
+        {
+            "images": {
+                "main": {
+                    "_id": "64b54755937ea0ffaa2e0525",
+                    "name": "new name",
+                    "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\src\\files\\images\\2023\\7\\17\\1689601877301-2383559.jpg"
+                },
+                "gallery": [
+                    {
+                        "_id": "64b7fb1b3e474c037fb428cf",
+                        "name": "wp11266119.jpg",
+                        "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\src\\files\\images\\2023\\7\\19\\1689778971586-203953.jpg"
+                    },
+                    {
+                        "_id": "64b7fb0b3e474c037fb428cc",
+                        "name": "e.jpg",
+                        "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\src\\files\\images\\2023\\7\\19\\1689778955688-4330658.jpg"
+                    }
+                ]
+            },
+            "_id": "64b812fe9f218256148bc2b4",
+            "title": "node Js course",
+            "description": "Node.js® is an open-source, cross-platform JavaScript runtime environment.",
+            "mindescription": "Node.js is a JavaScript runtime",
+            "categories": [
+                {
+                    "_id": "64b8141a9f218256148bc2c5",
+                    "name": "category one",
+                    "slug": "category-one",
+                    "id": "64b8141a9f218256148bc2c5"
+                }
+            ],
+            "size": [
+                "sm"
+            ],
+            "color": [
+                "green"
+            ],
+            "price": 10000,
+            "slug": "node-s-course",
+            "owner": "6432dcfb2b50736509f7180c",
+            "updatedAt": "2023-07-19T16:44:46.909Z",
+            "createdAt": "2023-07-19T16:44:46.909Z",
+            "__v": 0
+        }
+    ]
+}
+```
+
+برای جستجو در محصولات به آدرس زیر درخواست GET ارسال کنید
+
+GET: {{URL}}/api/admin/product?search=react js
+
+GET: {{URL}}/api/admin/product?search=productTitle
+
+پاسخ دریافتی:
+
+``` json
+{
+    "message": "the product",
+    "data": [
+        {
+            "images": {
+                "main": {
+                    "_id": "64b54755937ea0ffaa2e0525",
+                    "name": "new name",
+                    "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\src\\files\\images\\2023\\7\\17\\1689601877301-2383559.jpg"
+                },
+                "gallery": [
+                    {
+                        "_id": "64b7fb1b3e474c037fb428cf",
+                        "name": "wp11266119.jpg",
+                        "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\src\\files\\images\\2023\\7\\19\\1689778971586-203953.jpg"
+                    },
+                    {
+                        "_id": "64b7fb0b3e474c037fb428cc",
+                        "name": "e.jpg",
+                        "filepath": "\\Users\\Markazi-108\\Desktop\\projects\\ecommerce-Api-main\\src\\files\\images\\2023\\7\\19\\1689778955688-4330658.jpg"
+                    }
+                ]
+            },
+            "_id": "64b813729f218256148bc2bc",
+            "title": "react js course",
+            "description": "The library for web and native user interfaces.",
+            "mindescription": "React.js is a JavaScript library",
+            "categories": [
+                {
+                    "_id": "64b2e94b9f0bd229c9be769c",
+                    "name": "category two",
+                    "slug": "category-two",
+                    "id": "64b2e94b9f0bd229c9be769c"
+                }
+            ],
+            "size": [
+                "sm"
+            ],
+            "color": [
+                "green"
+            ],
+            "price": 50000,
+            "slug": "react-js-course",
+            "owner": "6432dcfb2b50736509f7180c",
+            "updatedAt": "2023-07-19T16:46:42.954Z",
+            "createdAt": "2023-07-19T16:46:42.954Z",
+            "__v": 0
+        }
+    ]
+}
+```
+
+
+
+
+
+
+
+
 
 
 
