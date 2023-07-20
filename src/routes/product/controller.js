@@ -15,42 +15,39 @@ module.exports = new (class extends controller {
       }
     }
 
-    const products = await this.Product.find({ ...query })
-      .populate({
-        path: "images.main images.gallery categories",
-        select: "filepath name slug",
-      })
+    const {limit,skip} = req.query
+
+
+    const products = await this.Product.find({...query}).limit(limit).skip(skip)
+    .populate({
+      path: "images.main images.gallery categories",
+      select: "filepath name slug",
+    })
       .exec();
 
-      let productMessage;
-      if(req.query.search){
-        productMessage = "the product"
-      } else if(req.query.category){
-        productMessage = "the product"
+    let productMessage;
+    if (req.query.search) {
+      productMessage = "the product";
+    } else if (req.query.category) {
+      productMessage = "the product";
+    } else {
+      productMessage = "the All products!";
+    }
 
-      } else {
-        productMessage = "the All products!"
-
-      }
-
-      if(products.length == 0){
-        this.response({
-          res,
-          code: 404,
-          message: "There is no product!",
-    
-        });
-      } else{
-        this.response({
-          res,
-          code: 200,
-          data: products,
-          message: productMessage,
-    
-        });
-      }
-
-
+    if (products.length == 0) {
+      this.response({
+        res,
+        code: 404,
+        message: "There is no product!",
+      });
+    } else {
+      this.response({
+        res,
+        code: 200,
+        data: products,
+        message: productMessage,
+      });
+    }
   }
 
   // get single product
@@ -63,29 +60,55 @@ module.exports = new (class extends controller {
         message: "invalid object id",
       });
     }
-    
+
     const product = await this.Product.findById(req.params.id)
       .populate({
         path: "images.main images.gallery categories",
       })
       .exec();
 
-      if (!product){
-        this.response({
-          res,
-          code: 404,
-          message: "No product was found!",
+    if (!product) {
+      this.response({
+        res,
+        code: 404,
+        message: "No product was found!",
+      });
+    } else {
+      this.response({
+        res,
+        code: 200,
+        message: "the product",
+        data: product,
+      });
+    }
+  }
 
-        });
-      } else{
-        this.response({
-          res,
-          code: 200,
-          message: "the product",
-          data: product,
-        });
-      }
+  // get product comments
+  async getProductComments(req, res) {
+    // check Object Id
+    if (!mongoose.isValidObjectId(req.params.id)) {
+      return this.response({
+        res,
+        code: 400,
+        message: "invalid object id",
+      });
+    }
 
+    const comments = await this.CommentModel.find({ productId: req.params.id }).populate({path: "parent"})
 
+    if (comments.length == 0) {
+      this.response({
+        res,
+        code: 404,
+        message: "There are no comments for this product",
+      });
+    } else {
+      this.response({
+        res,
+        code: 200,
+        message: "comments of this product",
+        data: comments,
+      });
+    }
   }
 })();

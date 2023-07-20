@@ -756,7 +756,7 @@ GET {{URL}}/api/product؟search=Slash pants
 
 برای دریافت محصولاتی که در یک دسته بندی خاص هستند به آدرس زیر درخواست GET ارسال کنید
 
-GET {{URL}}/api/productcategory=t-shirts
+GET {{URL}}/api/product?category=t-shirts
 
 پاسخ دریافت شده:
 
@@ -892,6 +892,74 @@ GET {{URL}}/api/product/64a9988b69ea51d88393fd6b
     }
 }
 ```
+
+## دریافت دیدگاه های ثبت شده برای یک محصول
+
+برای مشاهده دیدگاه های ثبت شده یک محصول به آدرس زیر درخواست GET ارسال کنید
+
+
+
+GET {{URL}}/api/product/comments/productId
+
+GET {{URL}}/api/product/comments/64a9988b69ea51d88393fd6b
+
+پاسخ دریافتی:
+
+``` json
+{
+    "message": "comments of this product",
+    "data": [
+        {
+            "_id": "64a6c98ad68599ed4dbcc1bd",
+            "name": "talhe",
+            "email": "talhe9930@gmail.com",
+            "authorId": "6432dcfb2b50736509f7180c",
+            "productId": "64b950947c6705e61f87080b",
+            "parent": {
+                "_id": "64b94e9e7a12a8bce2d1d931",
+                "name": "talhe",
+                "email": "talhe9930@gmail.com",
+                "authorId": "6432dcfb2b50736509f7180c",
+                "productId": "64b950947c6705e61f87080b",
+                "parent": null,
+                "rating": 5,
+                "title": "gooooood",
+                "description": "The price of this product is much better than other products",
+                "check": true,
+                "updatedAt": "2023-07-20T15:11:26.060Z",
+                "createdAt": "2023-07-20T15:11:26.060Z",
+                "__v": 0,
+                "id": "64b94e9e7a12a8bce2d1d931"
+            },
+            "rating": 5,
+            "title": "yellow",
+            "description": "Yellow color suits this shirt very well",
+            "check": true,
+            "updatedAt": "2023-07-16T18:27:42.668Z",
+            "createdAt": "2023-07-06T14:02:50.476Z",
+            "__v": 0,
+            "id": "64a6c98ad68599ed4dbcc1bd"
+        },
+        {
+            "_id": "64b94e9e7a12a8bce2d1d931",
+            "name": "talhe",
+            "email": "talhe9930@gmail.com",
+            "authorId": "6432dcfb2b50736509f7180c",
+            "productId": "64b950947c6705e61f87080b",
+            "parent": null,
+            "rating": 5,
+            "title": "gooooood",
+            "description": "The price of this product is much better than other products",
+            "check": true,
+            "updatedAt": "2023-07-20T15:11:26.060Z",
+            "createdAt": "2023-07-20T15:11:26.060Z",
+            "__v": 0,
+            "id": "64b94e9e7a12a8bce2d1d931"
+        }
+    ]
+}
+```
+
 
 ## پرداخت آنلاین
 
@@ -1450,9 +1518,9 @@ POST: {{URL}}/api/admin/product/create
 
 ``` json
 {
-    "title": "node Js course",
-    "description": "Node.js® is an open-source, cross-platform JavaScript runtime environment.",
-    "mindescription": "Node.js is a JavaScript runtime",
+    "title": "react js course",
+    "description": "The library for web and native user interfaces.",
+    "mindescription": "React.js is a JavaScript library",
     "images": {
         "main": "64b54755937ea0ffaa2e0525",
         "gallery": [
@@ -1463,7 +1531,7 @@ POST: {{URL}}/api/admin/product/create
     "categories": "64b2e94b9f0bd229c9be769c",
     "size": "sm",
     "color": "green",
-    "price": "10000"
+    "price": "50000"
 }
 ```
 
@@ -1473,32 +1541,10 @@ POST: {{URL}}/api/admin/product/create
 {
     "message": "the product successfuly saved",
     "data": {
-        "title": "node Js course",
-        "description": "Node.js® is an open-source, cross-platform JavaScript runtime environment.",
-        "mindescription": "Node.js is a JavaScript runtime",
-        "images": {
-            "main": "64b54755937ea0ffaa2e0525",
-            "gallery": [
-                "64b7fb1b3e474c037fb428cf",
-                "64b7fb0b3e474c037fb428cc"
-            ]
-        },
-        "categories": [
-            "64b2e94b9f0bd229c9be769c"
-        ],
-        "size": [
-            "sm"
-        ],
-        "color": [
-            "green"
-        ],
-        "price": 10000,
-        "slug": "node-s-course",
-        "owner": "6432dcfb2b50736509f7180c",
-        "_id": "64b80ce92798792c74a79382",
-        "updatedAt": "2023-07-19T16:18:49.934Z",
-        "createdAt": "2023-07-19T16:18:49.934Z",
-        "__v": 0
+        "_id": "64b950947c6705e61f87080b",
+        "title": "react js course",
+        "mindescription": "React.js is a JavaScript library",
+        "price": 50000
     }
 }
 ```
@@ -1554,32 +1600,10 @@ PUT: {{URL}}/api/admin/product/64b7fb593e474c037fb428d3
 {
     "message": "the product successfuly updated",
     "data": {
-        "images": {
-            "main": "64b54755937ea0ffaa2e0525",
-            "gallery": [
-                "64b7fb1b3e474c037fb428cf",
-                "64b7fb0b3e474c037fb428cc"
-            ]
-        },
-        "_id": "64b80ce92798792c74a79382",
+        "_id": "64b950947c6705e61f87080b",
         "title": "node Js course updated",
-        "description": "Node.js® is an open-source, cross-platform JavaScript runtime environment.",
         "mindescription": "Node.js is a JavaScript runtime",
-        "categories": [
-            "64b2e94b9f0bd229c9be769c"
-        ],
-        "size": [
-            "sm"
-        ],
-        "color": [
-            "green"
-        ],
-        "price": 50000,
-        "slug": "node-s-course-updated",
-        "owner": "6436767e1f76bd45c30117c1",
-        "updatedAt": "2023-07-19T16:28:40.543Z",
-        "createdAt": "2023-07-19T16:18:49.934Z",
-        "__v": 0
+        "price": 50000
     }
 }
 ```
@@ -1926,6 +1950,8 @@ GET: {{URL}}/api/admin/product?search=productTitle
     ]
 }
 ```
+
+
 
 
 

@@ -26,8 +26,10 @@ module.exports = new (class extends controller {
 
     }
 
+    const {limit,skip} = req.query
 
-    const products = await this.Product.find({...query})
+
+    const products = await this.Product.find({...query}).limit(limit).skip(skip)
     .populate({
       path: "images.main images.gallery categories",
       select: "filepath name slug",
@@ -92,7 +94,7 @@ module.exports = new (class extends controller {
       res,
       code: 200,
       message: "the product successfuly saved",
-      data: newproduct,
+      data: _.pick(newproduct, ["_id", "title", "mindescription","price"]),
     });
   }
 
@@ -118,7 +120,7 @@ module.exports = new (class extends controller {
       res,
       code: 200,
       message: "the product successfuly updated",
-      data: product,
+      data: _.pick(product, ["_id", "title", "mindescription","price"]),
     });
   }
 

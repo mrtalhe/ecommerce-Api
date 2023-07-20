@@ -13,6 +13,11 @@ router.get(
 
   controller.getSingleProduct
 );
+router.get(
+  "/comments/:id",
+
+  controller.getProductComments
+);
 
 
 
