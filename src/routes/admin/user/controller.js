@@ -10,10 +10,11 @@ module.exports = new (class extends controller {
 
     let users;
 
+    const {limit,skip} = req.query
     if(qNew){
       users = await this.User.find().sort({createdAt: -1}).limit(5)
     } else{
-      users = await this.User.find();
+      users = await this.User.find().limit(limit).skip(skip)
     }
 
     this.response({

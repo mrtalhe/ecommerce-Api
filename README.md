@@ -1951,6 +1951,298 @@ GET: {{URL}}/api/admin/product?search=productTitle
 }
 ```
 
+## مدیریت کاربران
+
+
+
+## افزودن کاربر
+
+برای ساخت یک کاربر جدید به آدرس زیر درخواست POST ارسال کنید
+
+
+POST: {{URL}}/api/admin/user/create
+
+نمونه درخواست:
+
+
+``` json
+{
+    "email": "morteza@gmail.com",
+    "username": "morteza",
+    "password": "123445678"
+}
+```
+
+
+پاسخ دریافتی:
+
+
+``` json
+{
+    "message": "the user successfuly registered",
+    "data": {
+        "_id": "64bebca6e321e8706eb818b6",
+        "username": "morteza",
+        "email": "morteza@gmail.com"
+    }
+}
+```
+
+
+## بروزرسانی اطلاعات کاربر
+
+برای ویرایش کردن اطلاعات کاربر به آدرس زیر درخواست PUT ارسال کنید
+
+
+POST: {{URL}}/api/admin/user/:userId
+
+
+
+نمونه درخواست:
+
+POST: {{URL}}/api/admin/user/64bebca6e321e8706eb818b6
+
+
+``` json
+{
+    "email": "morteza2@gmail.com",
+    "username": "newusername",
+    "password": "newpassword"
+}
+```
+
+
+پاسخ دریافتی:
+
+
+``` json
+{
+    "message": "the user successfuly updated",
+    "data": {
+        "_id": "64bebca6e321e8706eb818b6",
+        "username": "newusername",
+        "email": "morteza2@gmail.com"
+    }
+}
+```
+
+## حذف کاربر
+
+برای حدف کاربر کافیست به آدرس زیر درخواست DELETE ارسال کنید
+
+DELETE: {{URL}}/api/admin/user/:userId
+
+
+
+نمونه درخواست:
+
+DELETE: {{URL}}/api/admin/user/64bebca6e321e8706eb818b6
+
+
+پاسخ دریافتی:
+
+
+``` json
+{
+    "message": "the user successfuly deleted",
+    "data": {
+        "_id": "64bebca6e321e8706eb818b6",
+        "username": "newusername",
+        "email": "morteza2@gmail.com"
+    }
+}
+```
+
+## تغییر سطح کاربر به مدیر اصلی سایت
+
+برای اینکه کاربر عادی را تبدیل کنید به مدیر سایت تا بتواند تمام قسمت های سایت را مدیریت کند به آدرس زیر درخواست PUT ارسال کنید
+
+
+PUT: {{URL}}/api/admin/user/accessadmin/:userId
+
+
+
+نمونه درخواست:
+
+PUT: {{URL}}/api/admin/user/accessadmin/64a450f699e30131c22aa7de
+
+پاسخ دریافتی:
+
+
+``` json
+{
+    "message": "The user has successfully become an administrator",
+    "data": {
+        "_id": "6436767e1f76bd45c30117c1",
+        "username": "ali",
+        "email": "ali@gmail.com",
+        "isadmin": true
+    }
+}
+```
+
+دقت کنید فیلد isadmin به true تغییر پیدا کرد یعنی از این پس قادر به مدیریت کل سایت میباشد
+
+
+## دریافت کل کابران
+
+برای مشاهده اطلاعات همه کاربران به آدرس زیر درخواست GET ارسال کنید
+
+GET: {{URL}}/api/admin/user
+
+پاسخ دریافتی:
+
+``` json
+{
+    "message": "the All users",
+    "data": [
+        {
+            "_id": "6432dcfb2b50736509f7180c",
+            "email": "talhe9930@gmail.com",
+            "username": "talhe",
+            "password": "$2b$10$HsWdNCwkybiTjpMHefKrC.Vw/OkQYYHZiUDaPPv3qhOT91PBLg8Xe",
+            "isadmin": true,
+            "updatedAt": "2023-07-06T13:41:13.349Z",
+            "createdAt": "2023-04-09T15:42:51.516Z",
+            "__v": 0
+        },
+        {
+            "_id": "6436767e1f76bd45c30117c1",
+            "email": "ali@gmail.com",
+            "username": "ali",
+            "password": "$2b$10$f2hBcnkVx3JoIt5FDUuA.OfCesnxWeTmDP6QI3T9dNqbO8SkO6tqC",
+            "isadmin": true,
+            "updatedAt": "2023-07-24T18:14:11.606Z",
+            "createdAt": "2023-04-12T09:14:38.809Z",
+            "__v": 0
+        },
+        {
+            "_id": "64a450f699e30131c22aa7de",
+            "email": "ali9930@gmail.com",
+            "username": "ali",
+            "password": "$2b$10$rZ/7mooIMgLnW3J5AkH2uOK8R.QsCIGLvMkGZHqW5EsLexkP74ivS",
+            "isadmin": false,
+            "updatedAt": "2023-07-04T17:03:50.484Z",
+            "createdAt": "2023-07-04T17:03:50.484Z",
+            "__v": 0
+        }
+    ]
+}
+```
+
+
+## دریافت 5 کاربر ثبت نام شده اخیر
+
+GET: {{URL}}/api/admin/user?new=true
+
+با ارسال این درخواست فقط 5 کاربر جدید سایت برگشت داده میشود
+
+پاسخ دریافتی:
+
+``` json
+{
+    "message": "the All users",
+    "data": [
+        {
+            "_id": "64a450f699e30131c22aa7de",
+            "email": "ali9930@gmail.com",
+            "username": "ali",
+            "password": "$2b$10$rZ/7mooIMgLnW3J5AkH2uOK8R.QsCIGLvMkGZHqW5EsLexkP74ivS",
+            "isadmin": false,
+            "updatedAt": "2023-07-04T17:03:50.484Z",
+            "createdAt": "2023-07-04T17:03:50.484Z",
+            "__v": 0
+        },
+        {
+            "_id": "6436767e1f76bd45c30117c1",
+            "email": "ali@gmail.com",
+            "username": "ali",
+            "password": "$2b$10$f2hBcnkVx3JoIt5FDUuA.OfCesnxWeTmDP6QI3T9dNqbO8SkO6tqC",
+            "isadmin": true,
+            "updatedAt": "2023-07-24T18:14:11.606Z",
+            "createdAt": "2023-04-12T09:14:38.809Z",
+            "__v": 0
+        },
+        {
+            "_id": "6432dcfb2b50736509f7180c",
+            "email": "talhe9930@gmail.com",
+            "username": "talhe",
+            "password": "$2b$10$HsWdNCwkybiTjpMHefKrC.Vw/OkQYYHZiUDaPPv3qhOT91PBLg8Xe",
+            "isadmin": true,
+            "updatedAt": "2023-07-06T13:41:13.349Z",
+            "createdAt": "2023-04-09T15:42:51.516Z",
+            "__v": 0
+        }
+    ]
+}
+```
+
+## دریافت مشخص تعدادی از کاربران با query limit 
+
+GET: {{URL}}/api/admin/user?limit=2
+
+با ارسال این درخواست فقط اطلاعات 2 کاربر دریافت میشود
+
+
+پاسخ دریافتی:
+
+``` json
+{
+    "message": "the All users",
+    "data": [
+        {
+            "_id": "6432dcfb2b50736509f7180c",
+            "email": "talhe9930@gmail.com",
+            "username": "talhe",
+            "password": "$2b$10$HsWdNCwkybiTjpMHefKrC.Vw/OkQYYHZiUDaPPv3qhOT91PBLg8Xe",
+            "isadmin": true,
+            "updatedAt": "2023-07-06T13:41:13.349Z",
+            "createdAt": "2023-04-09T15:42:51.516Z",
+            "__v": 0
+        },
+        {
+            "_id": "6436767e1f76bd45c30117c1",
+            "email": "ali@gmail.com",
+            "username": "ali",
+            "password": "$2b$10$f2hBcnkVx3JoIt5FDUuA.OfCesnxWeTmDP6QI3T9dNqbO8SkO6tqC",
+            "isadmin": true,
+            "updatedAt": "2023-07-24T18:14:11.606Z",
+            "createdAt": "2023-04-12T09:14:38.809Z",
+            "__v": 0
+        }
+    ]
+}
+```
+
+## دریافت کاربران بعد از یک تعداد مشخص
+
+
+GET: {{URL}}/api/admin/user?skip=2
+
+با ارسال این درخواست اطلاعات کاربران بعد از دومین کاربر دریافت میشود در واقع اطلاعات دو کاربر رد میشود و بعد از آن نمایش داده میشود
+
+
+پاسخ دریافتی:
+
+``` json
+{
+    "message": "the All users",
+    "data": [
+        {
+            "_id": "64a450f699e30131c22aa7de",
+            "email": "ali9930@gmail.com",
+            "username": "ali",
+            "password": "$2b$10$rZ/7mooIMgLnW3J5AkH2uOK8R.QsCIGLvMkGZHqW5EsLexkP74ivS",
+            "isadmin": false,
+            "updatedAt": "2023-07-04T17:03:50.484Z",
+            "createdAt": "2023-07-04T17:03:50.484Z",
+            "__v": 0
+        }
+    ]
+}
+```
+
+
 
 
 
