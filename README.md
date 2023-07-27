@@ -2282,6 +2282,51 @@ DELETE: {{URL}}/api/admin/order/64c27892e31f67a15158f0a3
 }
 ```
 
+## مدیریت سبد خرید
+
+## دریافت تمام سبد خرید های موجود
+
+برای مشاهده همه سبد خرید ها به آدرس زیر درخواست  GET ارسال کنید
+
+
+GET: {{URL}}/api/admin/cart
+
+پاسخ دریافتی:
+
+``` json
+{
+    "message": "the all carts",
+    "data": [
+        {
+            "payment": {
+                "state": "READY",
+                "date": 1690467072107
+            },
+            "_id": "64c27b2cd9fba21e09275b7a",
+            "userId": "6432dcfb2b50736509f7180c",
+            "list": [
+                {
+                    "productId": "64b951c32e572138eab8d226",
+                    "quantity": 1,
+                    "price": 30000,
+                    "_id": "64c27b2cd9fba21e09275b7b"
+                },
+                {
+                    "productId": "64b950947c6705e61f87080b",
+                    "quantity": 1,
+                    "price": 50000,
+                    "_id": "64c27b5bd9fba21e09275b84"
+                }
+            ],
+            "amount": 80000,
+            "updatedAt": "2023-07-27T14:12:43.197Z",
+            "createdAt": "2023-07-27T14:11:56.082Z",
+            "__v": 1
+        }
+    ]
+}
+```
+
 
 
 
