@@ -7,7 +7,6 @@ module.exports = new (class extends controller {
   createValidator() {
     return [
 
-      check("userId").not().isEmpty().withMessage("userID cant be empty"),
       check("products").not().isEmpty().withMessage("products cant be empty"),
 
     ];
@@ -16,7 +15,6 @@ module.exports = new (class extends controller {
   updateValidator() {
     return [
 
-      check("userId").not().isEmpty().withMessage("userID cant be empty"),
       check("products").not().isEmpty().withMessage("products cant be empty"),
 
     ];

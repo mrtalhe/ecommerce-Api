@@ -5,7 +5,7 @@ const { PaymentState } =  require("../types/types.js");
 
 const orderSchema = new mongoose.Schema({
   userId: { type: Schema.Types.ObjectId, required: true, ref: "User"},
-  products: [
+  list: [
     { 
         productId: {
             type: Schema.Types.ObjectId,

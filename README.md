@@ -2177,71 +2177,110 @@ GET: {{URL}}/api/admin/user?new=true
 }
 ```
 
-## دریافت مشخص تعدادی از کاربران با query limit 
+## مدیریت سفارشات
 
-GET: {{URL}}/api/admin/user?limit=2
 
-با ارسال این درخواست فقط اطلاعات 2 کاربر دریافت میشود
+## دریافت همه سفارشات
 
+برای مشاهده همه سفارشات موفق آمیز به آدرس زیر درخواست GET ارسال کنید
+
+GET: {{URL}}/api/admin/order
 
 پاسخ دریافتی:
 
 ``` json
 {
-    "message": "the All users",
+    "message": "the all orders",
     "data": [
         {
-            "_id": "6432dcfb2b50736509f7180c",
-            "email": "talhe9930@gmail.com",
-            "username": "talhe",
-            "password": "$2b$10$HsWdNCwkybiTjpMHefKrC.Vw/OkQYYHZiUDaPPv3qhOT91PBLg8Xe",
-            "isadmin": true,
-            "updatedAt": "2023-07-06T13:41:13.349Z",
-            "createdAt": "2023-04-09T15:42:51.516Z",
+            "payment": {
+                "authority": "A00000000000000000000000000447834209",
+                "code": 100,
+                "state": "SUCCESS",
+                "date": 1690552842953
+            },
+            "_id": "64c27892e31f67a15158f0a3",
+            "userId": "6432dcfb2b50736509f7180c",
+            "list": [
+                {
+                    "productId": "64b950947c6705e61f87080b",
+                    "quantity": 1,
+                    "price": 50000,
+                    "_id": "64c27882e31f67a15158f09a"
+                }
+            ],
+            "amount": 50000,
+            "updatedAt": "2023-07-27T14:00:50.097Z",
+            "createdAt": "2023-07-27T14:00:50.097Z",
             "__v": 0
         },
         {
-            "_id": "6436767e1f76bd45c30117c1",
-            "email": "ali@gmail.com",
-            "username": "ali",
-            "password": "$2b$10$f2hBcnkVx3JoIt5FDUuA.OfCesnxWeTmDP6QI3T9dNqbO8SkO6tqC",
-            "isadmin": true,
-            "updatedAt": "2023-07-24T18:14:11.606Z",
-            "createdAt": "2023-04-12T09:14:38.809Z",
+            "payment": {
+                "authority": "A00000000000000000000000000447834543",
+                "code": 100,
+                "state": "SUCCESS",
+                "date": 1690552967672
+            },
+            "_id": "64c2790fe31f67a15158f0b7",
+            "userId": "6432dcfb2b50736509f7180c",
+            "list": [
+                {
+                    "productId": "64b951c32e572138eab8d226",
+                    "quantity": 1,
+                    "price": 30000,
+                    "_id": "64c27904e31f67a15158f0ae"
+                }
+            ],
+            "amount": 30000,
+            "updatedAt": "2023-07-27T14:02:55.714Z",
+            "createdAt": "2023-07-27T14:02:55.714Z",
             "__v": 0
         }
     ]
 }
 ```
 
-## دریافت کاربران بعد از یک تعداد مشخص
+## حذف یک سفارش
+
+برای حذف یک سفارش ثبت شده به آدرس زیر درخواست DELETE ارسال کنید
 
 
-GET: {{URL}}/api/admin/user?skip=2
+DELETE: {{URL}}/api/admin/order/:orderId
 
-با ارسال این درخواست اطلاعات کاربران بعد از دومین کاربر دریافت میشود در واقع اطلاعات دو کاربر رد میشود و بعد از آن نمایش داده میشود
+نمونه درخواست:
+
+DELETE: {{URL}}/api/admin/order/64c27892e31f67a15158f0a3
 
 
 پاسخ دریافتی:
 
 ``` json
 {
-    "message": "the All users",
-    "data": [
-        {
-            "_id": "64a450f699e30131c22aa7de",
-            "email": "ali9930@gmail.com",
-            "username": "ali",
-            "password": "$2b$10$rZ/7mooIMgLnW3J5AkH2uOK8R.QsCIGLvMkGZHqW5EsLexkP74ivS",
-            "isadmin": false,
-            "updatedAt": "2023-07-04T17:03:50.484Z",
-            "createdAt": "2023-07-04T17:03:50.484Z",
-            "__v": 0
-        }
-    ]
+    "message": "the order successfuly deleted",
+    "data": {
+        "payment": {
+            "authority": "A00000000000000000000000000447834209",
+            "code": 100,
+            "state": "SUCCESS",
+            "date": 1690552842953
+        },
+        "_id": "64c27892e31f67a15158f0a3",
+        "userId": "6432dcfb2b50736509f7180c",
+        "list": [
+            {
+                "productId": "64b950947c6705e61f87080b",
+                "quantity": 1,
+                "price": 50000,
+                "_id": "64c27882e31f67a15158f09a"
+            }
+        ],
+        "amount": 50000,
+        "updatedAt": "2023-07-27T14:00:50.097Z",
+        "createdAt": "2023-07-27T14:00:50.097Z",
+        "__v": 0
+    }
 }
 ```
-
 
 
 
