@@ -6,6 +6,13 @@ let PaymentState;
     PaymentState["Cancel"] = "CANCEL";
 })(PaymentState || (PaymentState = {}));
 
-module.exports = {PaymentState}
+let LocationType;
+(function (LocationType) {
+    LocationType["Country"] = "COUNTRY";
+    LocationType["ProvState"] = "PROVESTATE";
+    LocationType["City"] = "CITY";
+})(LocationType || (LocationType = {}));
+
+module.exports = {PaymentState,LocationType}
 
 

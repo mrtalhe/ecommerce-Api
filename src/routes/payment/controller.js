@@ -75,8 +75,8 @@ module.exports = new (class extends controller {
     if (Status === "OK") {
 
       cart.payment.state = PaymentState.Success;
-      const { userId, list, payment, amount } = cart;
-      const newOrder = new this.Order({ userId, list, payment, amount });
+      const { userId, products, payment, amount } = cart;
+      const newOrder = new this.Order({ userId, products, payment, amount });
       const order = await newOrder.save();
       await cart.delete();
       this.response({ code: 200,res, data: order, message: "The payment is done." });

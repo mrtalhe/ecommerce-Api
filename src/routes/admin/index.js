@@ -8,6 +8,7 @@ const orderRouter = require("./order")
 const categoryRouter = require("./category")
 const fileRouter = require("./file")
 const commentRouter = require("./comment")
+const locationRouter = require("./location")
 
 router.get(
   '/',
@@ -20,6 +21,7 @@ router.use("/order", orderRouter)
 router.use("/category", categoryRouter)
 router.use("/file", fileRouter)
 router.use("/comment", commentRouter)
+router.use("/location", locationRouter)
 
 
 

@@ -7,6 +7,7 @@ const Cart = require("../models/cart");
 const Category = require("../models/category");
 const FileModel = require("../models/file");
 const CommentModel = require("../models/comment");
+const LocationModel = require("../models/location");
 const mongoose = require('mongoose');
 
 module.exports = class {
@@ -19,6 +20,10 @@ module.exports = class {
     this.Category = Category;
     this.FileModel = FileModel;
     this.CommentModel = CommentModel;
+    this.CountryModel = LocationModel.CountryModel;
+    this.ProvStateModel = LocationModel.ProvStateModel;
+    this.CityModel = LocationModel.CityModel;
+    this.AddressModel = LocationModel.AddressModel;
   }
 
   validationBody(req, res) {

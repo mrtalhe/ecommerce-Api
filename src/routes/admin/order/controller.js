@@ -6,6 +6,33 @@ const { default: mongoose } = require("mongoose");
 module.exports = new (class extends controller {
 
 
+  // update order
+  async updateOrder(req, res) {
+    // check Object Id
+    if (!mongoose.isValidObjectId(req.params.id)) {
+      return this.response({
+        res,
+        code: 400,
+        message: "invalid object id",
+      });
+    }
+    // update process
+    const order = await this.Order.findByIdAndUpdate(
+      req.params.id,
+      { $set: { ...req.body } },
+      { new: true }
+    );
+
+    // save and send response
+    await order.save();
+
+    this.response({
+      res,
+      code: 200,
+      message: "the order successfuly updated",
+      data: order,
+    });
+  }
 
   // delete order
   async deleteOrder(req, res) {
