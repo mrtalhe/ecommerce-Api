@@ -9,6 +9,7 @@ const addressRouter = require("./address");
 
 const productRouter = require("./product");
 const paymentRouter = require("./payment");
+const resetPassword = require("./resetpassword");
 
 const adminRouter = require("./admin");
 
@@ -24,6 +25,7 @@ router.use("/payment", isLoggined, paymentRouter)
 router.use("/user", isLoggined, userRouter);
 router.use("/comment", isLoggined, commentRouter);
 router.use("/address", isLoggined, addressRouter);
+router.use("/reset", resetPassword);
 router.use("/admin", isLoggined, isAdmin, adminRouter);
 
 router.use(error);
