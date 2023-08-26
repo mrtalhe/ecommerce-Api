@@ -2327,6 +2327,309 @@ GET: {{URL}}/api/admin/cart
 }
 ```
 
+## افزودن مکان
+
+برای افزودن مکان، (کشور/ایالت|استان/شهر) به آدرس زیر با متد Post درخواست ارسال کنید:
+
+POST: {{URL}}/api/admin/location/add
+
+
+| فیلد | نوع | توضیحات |
+| :---:  | :---:  |  ---: |
+| type* | string | میتواند: COUNTRY – PROVESTATE - CITY |
+| name | string | نام کشور یا استان/ایالت یا شهر |
+| url | string | لینک و یا آدرس |
+| parent | ObjectId | برای انواع CITY و PROVESTATE باید مقدار والد را مشخص کنید |
+
+
+نکته: برای ایجاد کشور مقدار COUNTRY باید وارد شود، برای ایجاد ایالت یا استان باید مقدار PROVESTATE وارد شود و برای ایجاد شهر باید مقدار CITY وارد شود. (فقط حروف بزرگ)
+
+به جز کشور برای استان ها و یا ایالت ها و شهر ها باید مقدار والد آنرا مشخص کنید. مثلا برای ایجاد شهر باید شناسه استان والد آن شهر را وارد کنید و یا برای استان باید شناسه کشور والد آن استان را مشخص کنید.
+
+
+نمونه درخواست افزودن کشور:
+
+
+``` json
+
+{
+    "type": "COUNTRY",
+    "name": "Iran",
+    "url": "iran"
+
+}
+
+```
+
+پاسخ دریافتی:
+
+``` json
+
+{
+    "message": "Location added.",
+    "data": {
+        "name": "Iran",
+        "url": "iran",
+        "_id": "64ea3270316f9f571f408238",
+        "updatedAt": "2023-08-26T17:12:16.769Z",
+        "createdAt": "2023-08-26T17:12:16.769Z",
+        "__v": 0
+    }
+}
+
+```
+
+نمونه درخواست افزودن استان:
+
+
+``` json
+
+{
+    "type": "PROVESTATE",
+    "name": "Zahedan",
+    "url": "zahedan",
+    "parent": "64ea3270316f9f571f408238"
+}
+```
+
+پاسخ دریافتی:
+
+``` json
+
+{
+    "message": "Location added.",
+    "data": {
+        "name": "Zahedan",
+        "url": "zahedan",
+        "parent": "64ea3270316f9f571f408238",
+        "_id": "64ea3330316f9f571f40823b",
+        "updatedAt": "2023-08-26T17:15:28.610Z",
+        "createdAt": "2023-08-26T17:15:28.610Z",
+        "__v": 0
+    }
+}
+
+```
+
+نمونه درخواست افزودن شهر:
+
+
+``` json
+
+{
+    "type": "CITY",
+    "name": "Zahedan",
+    "url": "zahedan",
+    "parent": "64ea3330316f9f571f40823b"
+}
+
+```
+
+پاسخ دریافتی:
+
+``` json
+
+{
+    "message": "Location added.",
+    "data": {
+        "name": "Zahedan",
+        "url": "zahedan",
+        "parent": "64ea3330316f9f571f40823b",
+        "_id": "64ea337b316f9f571f40823e",
+        "updatedAt": "2023-08-26T17:16:43.630Z",
+        "createdAt": "2023-08-26T17:16:43.630Z",
+        "__v": 0
+    }
+}
+
+```
+
+## بروزرسانی مکان
+
+برای بروزرسانی یک مکان به آدرس زیر درخواست PUT ارسال کنید:
+
+PUT: {{URL}}/api/admin/location/update/:locationId
+
+نمونه درخواست ارسالی:
+
+PUT: {{URL}}/api/admin/location/update/64ea3330316f9f571f40823b
+
+
+``` json
+
+{
+    "type": "PROVESTATE",
+    "name": "Tehran",
+    "url": "tehran",
+    "parent": "64ea34e7ed63fc37f380339a"
+}
+
+```
+
+پاسخ دریافتی:
+
+``` json
+
+{
+    "message": "Location updated.",
+    "data": {
+        "_id": "64ea3330316f9f571f40823b",
+        "name": "Tehran",
+        "url": "tehran",
+        "parent": "64ea34e7ed63fc37f380339a",
+        "updatedAt": "2023-08-26T17:23:20.889Z",
+        "createdAt": "2023-08-26T17:15:28.610Z",
+        "__v": 0
+    }
+}
+
+```
+
+## فهرست گیری از کشور ها
+
+برای دریافت لیست کلیه کشورها به آدرس زیر درخواست GET ارسال کنید:
+
+GET: {{URL}}/api/admin/location/list
+
+پاسخ دریافتی:
+
+``` json
+
+{
+    "message": "Country found.",
+    "data": [
+        {
+            "_id": "64ea3270316f9f571f408238",
+            "name": "Iran",
+            "url": "iran",
+            "updatedAt": "2023-08-26T17:12:16.769Z",
+            "createdAt": "2023-08-26T17:12:16.769Z",
+            "__v": 0
+        },
+        {
+            "_id": "64ea34e7ed63fc37f380339a",
+            "name": "Canada",
+            "url": "canada",
+            "updatedAt": "2023-08-26T17:22:47.883Z",
+            "createdAt": "2023-08-26T17:22:47.883Z",
+            "__v": 0
+        }
+    ]
+}
+
+```
+
+## نمایش مکان
+
+برای دریافت جزئیات و استان ها و شهر های زیر مجموعه یک مکان به آدرس زیر با متد GET درخواست ارسال کنید:
+
+GET: {{URL}}/api/admin/location/view/:locationId
+
+نمونه درخواست ارسالی:
+
+GET: {{URL}}/api/admin/location/view/64ea34e7ed63fc37f380339a
+
+
+``` json
+
+{
+    "type": "COUNTRY"
+}
+
+```
+
+پاسخ دریافتی:
+
+``` json
+
+{
+    "message": "Country found",
+    "data": {
+        "country": {
+            "_id": "64ea34e7ed63fc37f380339a",
+            "name": "Canada",
+            "url": "canada",
+            "updatedAt": "2023-08-26T17:22:47.883Z",
+            "createdAt": "2023-08-26T17:22:47.883Z",
+            "__v": 0
+        },
+        "provState": [
+            {
+                "_id": "64ea3330316f9f571f40823b",
+                "name": "Tehran",
+                "url": "tehran",
+                "parent": "64ea34e7ed63fc37f380339a",
+                "updatedAt": "2023-08-26T17:23:20.889Z",
+                "createdAt": "2023-08-26T17:15:28.610Z",
+                "__v": 0
+            }
+        ]
+    }
+}
+
+```
+
+## حذف مکان
+
+برای حذف یک مکان به آدرس زیر درخواست DELETE ارسال کنید
+
+DELETE: {{URL}}/api/admin/location/delete/:locationId
+
+نمونه درخواست ارسالی:
+
+DELETE: {{URL}}/api/admin/location/delete/64ea3270316f9f571f408238
+
+
+``` json
+
+{
+    "type": "COUNTRY"
+}
+
+```
+
+پاسخ دریافتی:
+
+``` json
+
+{
+    "message": "This location id: 64ea3270316f9f571f408238 deleted!",
+    "data": {
+        "_id": "64ea3270316f9f571f408238",
+        "name": "Iran",
+        "url": "iran",
+        "updatedAt": "2023-08-26T17:12:16.769Z",
+        "createdAt": "2023-08-26T17:12:16.769Z",
+        "__v": 0
+    }
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
