@@ -1060,6 +1060,196 @@ POST: {{URL}}/api/payment/checkout
 نکته بعد از انجام شدن پرداخت موفق سبد خرید از دیتابیس حذف میشود 
 
 
+## افزودن آدرس
+
+برای افزودن آدرس به مسیر زیر درخواست POST ارسال کنید
+
+POST: {{URL}}/api/address/add
+
+نمونه درخواست ارسالی:
+
+
+``` json
+
+{
+    "country": "64ea34e7ed63fc37f380339a",
+    "provState": "64ea3330316f9f571f40823b",
+    "city": "64ea337b316f9f571f40823e",
+    "address": "َAzadi street",
+    "postalcode": "8999333432"
+}
+
+```
+
+پاسخ دریافتی:
+
+``` json
+
+{
+    "message": "Address added.",
+    "data": {
+        "country": "64ea34e7ed63fc37f380339a",
+        "provState": "64ea3330316f9f571f40823b",
+        "city": "64ea337b316f9f571f40823e",
+        "address": "َAzadi street",
+        "postalcode": "8999333432",
+        "userId": "6432dcfb2b50736509f7180c",
+        "_id": "64ea417e1163f4e83605e576",
+        "updatedAt": "2023-08-26T18:16:30.553Z",
+        "createdAt": "2023-08-26T18:16:30.553Z",
+        "__v": 0
+    }
+}
+
+```
+
+## بروزرسانی آدرس
+
+برای بروزرسانی آدرس به مسیر زیر درخواست PUT ارسال کنید
+
+PUT: {{URL}}/api/address/update/:addressId
+
+نمونه درخواست ارسالی:
+
+PUT: {{URL}}/api/address/update/64ea417e1163f4e83605e576
+
+
+``` json
+
+{
+    "country": "64ea34e7ed63fc37f380339a",
+    "provState": "64ea3330316f9f571f40823b",
+    "city": "64ea337b316f9f571f40823e",
+    "address": "َAddress Updated!",
+    "postalcode": "8999333432"
+}
+
+```
+
+پاسخ دریافتی:
+
+``` json
+
+{
+    "message": "Address updated.",
+    "data": {
+        "_id": "64ea417e1163f4e83605e576",
+        "country": "64ea34e7ed63fc37f380339a",
+        "provState": "64ea3330316f9f571f40823b",
+        "city": "64ea337b316f9f571f40823e",
+        "address": "َAddress Updated!",
+        "postalcode": "8999333432",
+        "userId": "6432dcfb2b50736509f7180c",
+        "updatedAt": "2023-08-26T18:19:06.343Z",
+        "createdAt": "2023-08-26T18:16:30.553Z",
+        "__v": 0
+    }
+}
+
+```
+
+##  لیست آدرس ها
+
+برای فهرست گیری از آدرس های پستی خریدار به آدرس زیر با متد GET درخواست ارسال کنید:
+
+GET: {{URL}}/api/address/list
+
+نمونه درخواست ارسالی:
+
+
+پاسخ دریافتی:
+
+``` json
+
+{
+    "message": "Address found.",
+    "data": [
+        {
+            "_id": "64ea417e1163f4e83605e576",
+            "address": "َAddress Updated!"
+        },
+        {
+            "_id": "64ea45001163f4e83605e57e",
+            "address": "َAzadi street"
+        }
+    ]
+}
+
+```
+
+## دریافت جزئیات آدرس
+
+برای دریافت جزئیات آدرس پستی یک کاربر به ادرس زیر با متد GET درخواست ارسال کنید:
+
+
+GET: {{URL}}/api/address/view/:addressId
+
+نمونه درخواست ارسالی:
+
+GET: {{URL}}/api/address/view/64ea45001163f4e83605e57e
+
+پاسخ دریافتی:
+
+``` json
+
+{
+    "message": "Address found.",
+    "data": {
+        "_id": "64ea45001163f4e83605e57e",
+        "country": "64ea34e7ed63fc37f380339a",
+        "provState": "64ea3330316f9f571f40823b",
+        "city": "64ea337b316f9f571f40823e",
+        "address": "َAzadi street",
+        "postalcode": "8999333432",
+        "userId": "6432dcfb2b50736509f7180c",
+        "updatedAt": "2023-08-26T18:31:28.171Z",
+        "createdAt": "2023-08-26T18:31:28.171Z",
+        "__v": 0
+    }
+}
+
+```
+
+## حذف یک آدرس
+
+برای حذف یک آدرس به مسیر زیر درخواست DELETE ارسال کنید:
+
+DELETE: {{URL}}/api/address/delete/:addressId
+
+نمونه درخواست ارسالی:
+
+DELETE: {{URL}}/api/address/delete/64ea45001163f4e83605e57e
+
+
+پاسخ دریافتی:
+
+``` json
+
+{
+    "message": "Address deleted.",
+    "data": {
+        "_id": "64ea45001163f4e83605e57e",
+        "country": "64ea34e7ed63fc37f380339a",
+        "provState": "64ea3330316f9f571f40823b",
+        "city": "64ea337b316f9f571f40823e",
+        "address": "َAzadi street",
+        "postalcode": "8999333432",
+        "userId": "6432dcfb2b50736509f7180c",
+        "updatedAt": "2023-08-26T18:31:28.171Z",
+        "createdAt": "2023-08-26T18:31:28.171Z",
+        "__v": 0
+    }
+}
+
+```
+
+
+
+
+
+
+
+
 ## نکته مهم
 
 ## دوستان عزیز توجه کنید امکاناتی که از این پس مشاهده میکنید فقط مختص مدیر اصلی وبسایت میباشد
@@ -2605,6 +2795,9 @@ DELETE: {{URL}}/api/admin/location/delete/64ea3270316f9f571f408238
 }
 
 ```
+
+
+
 
 
 
