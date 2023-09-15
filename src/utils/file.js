@@ -8,7 +8,7 @@ function genFilePath(name, mimetype) {
     const datePath = currDate.getFullYear() + '/' + (currDate.getMonth() + 1) + '/' + currDate.getDate();
     const randName = Math.floor(Math.random() * 9999999);
     const fileName = Date.now() + '-' + randName + name.substring(name.lastIndexOf('.'), name.length);
-    return path.join(myDirname, `../files/${mimetype.split('/')[0]}s/${datePath}/`, fileName);
+    return path.join(myDirname, `../../public/${mimetype.split('/')[0]}s/${datePath}/`, fileName);
 
 };
 
