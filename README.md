@@ -236,13 +236,13 @@ npm start
 
 ## نحوه ارسال ریکوئست
 
-برای ارسال ریکوست به بک اند به فرمت JSON باید طبق دستورالعمل های زیر اقدام کنید، توجه کنید بجای مقدار {{URL}} باید از آدرس سرور مورد نظر خود استفاده کنید.
+برای ارسال ریکوست به بک اند به فرمت JSON باید طبق دستورالعمل های زیر اقدام کنید، توجه کنید بجای مقدار `{{URL}}` باید از آدرس سرور مورد نظر خود استفاده کنید.
 
 ## ثبت نام در برنامه
 
 برای ثبت نام در برنامه به آدرس زیر با متد Post ریکوست ارسال کنید:
 
-POST: {{URL}}/api/auth/register
+POST: `{{URL}}/api/auth/register`
 
 | فیلد | نوع | توضیحات |
 | :---:  | :---:  |  ---: |
@@ -279,7 +279,7 @@ POST: {{URL}}/api/auth/register
 
 برای ورود به برنامه به آدرس زیر با متد Post ریکوست ارسال کنید:
 
-POST: {{URL}}/api/auth/login
+POST: `{{URL}}/api/auth/login`
 
 نمونه ریکوست:
 ``` json
@@ -308,7 +308,7 @@ POST: {{URL}}/api/auth/login
 
 در صورت فراموشی رمز عبور به آدرس زیر با متد POST درخواست ارسال کنید:
 
-POST: {{URL}}/api/reset/forget
+POST: `{{URL}}/api/reset/forget`
 
 نمونه درخواست:
 
@@ -320,7 +320,7 @@ POST: {{URL}}/api/reset/forget
 
 در صورت موفقیت آمیز بودن فرایند یک ایمیل به کاربر ارسال میشود که حاوی لینک بازیابی رمز عبور است. نمونه :
 
-POST: {{URL}}/api/reset/b5a5e6ffab8e6f4351fde5fe9806bee5f967cf5e7b5ff2ebdc453222f79337b4f54b7e7a82e94f97
+POST: `{{URL}}/api/reset/b5a5e6ffab8e6f4351fde5fe9806bee5f967cf5e7b5ff2ebdc453222f79337b4f54b7e7a82e94f97`
 
 با کلیک بر روی لینک بالا کاربر به صفحه ریست پسور در فرانت منتقل میشود و از آن قسمت میبایست مقدار پارامتری که در جلوی reset وجود دارد به همراه رمز عبور تازه به بکاند یا همان برنامه ما ارسال شود.
 
@@ -329,7 +329,7 @@ POST: {{URL}}/api/reset/b5a5e6ffab8e6f4351fde5fe9806bee5f967cf5e7b5ff2ebdc453222
 برای بازیابی رمز عبور درخواست خود را به آدرس زیر با متد POST ارسال کنید.
 
 
-POST: {{URL}}/api/reset/b5a5e6ffab8e6f4351fde5fe9806bee5f967cf5e7b5ff2ebdc453222f79337b4f54b7e7a82e94f97
+POST: `{{URL}}/api/reset/b5a5e6ffab8e6f4351fde5fe9806bee5f967cf5e7b5ff2ebdc453222f79337b4f54b7e7a82e94f97`
 
 نمونه درخواست:
 
@@ -357,7 +357,7 @@ POST: {{URL}}/api/reset/b5a5e6ffab8e6f4351fde5fe9806bee5f967cf5e7b5ff2ebdc453222
 
 برای دریافت پروفایل کاربر به آدرس زیر درخواست get ارسال کنید
 
-GET: {{URL}}/api/user/profile
+GET: `{{URL}}/api/user/profile`
 
 مقدار بازگشتی:
 ``` json
@@ -376,7 +376,7 @@ GET: {{URL}}/api/user/profile
 
 برای بروز رسانی پروفایل کاربر به آدرس زیر با متد put ریکوست ارسال کنید:
 
-PUT: {{URL}}/api/user/update
+PUT: `{{URL}}/api/user/update`
 
 | فیلد | نوع | توضیحات |
 | :---:  | :---:  |  ---: |
@@ -406,7 +406,7 @@ PUT: {{URL}}/api/user/update
 
 برای اضافه کردن یک محصول بع سبد خرید باید شناسه محصول را با متد Post به آدرس زیر ارسال کنید:
 
-POST: {{URL}}/api/cart/create
+POST: `{{URL}}/api/cart/create`
 
 | فیلد | نوع | توضیحات |
 | :---:  | :---:  |  ---: |
@@ -452,7 +452,7 @@ POST: {{URL}}/api/cart/create
 
 برای بروز رسانی سبد خرید به آدرس زیر با متد PUT ریکوست ارسال کنید:
 
-PUT: {{URL}}/api/cart/update
+PUT: `{{URL}}/api/cart/update`
 
 | فیلد | نوع | توضیحات |
 | :---:  | :---:  |  ---: |
@@ -517,7 +517,7 @@ PUT: {{URL}}/api/cart/update
 
 برای خالی کردن سبد خرید به آدرس زیر با متد Delete ریکوست ارسال کنید:
 
-DELET: {{URL}}/api/cart/delete
+DELET: `{{URL}}/api/cart/delete`
 
 
 مقدار بازگشتی:
@@ -533,7 +533,7 @@ DELET: {{URL}}/api/cart/delete
 
 برای مشاهده محصولات افزوده شده به سبد خرید به آدرس زیر با متد Get ریکوست ارسال کنید:
 
-DELETE: {{URL}}/api/cart/view
+DELETE: `{{URL}}/api/cart/view`
 
 مقدار بازگشتی:
 
@@ -567,7 +567,7 @@ DELETE: {{URL}}/api/cart/view
 
 برای فهرست گیری از کلیه سفارش های انجام شده به آدرس زیر با متد Get ریکوست ارسال کنید:
 
-GET: {{URL}}/api/order/list
+GET: `{{URL}}/api/order/list`
 
 مقدار بازگشتی:
 
@@ -606,11 +606,11 @@ GET: {{URL}}/api/order/list
 برای دریافت جزئیات سفارش به آدرس زیر با متد Get ریکوست ارسال کنید:
 
 
-GET: {{GET}}/order/view/orderId
+GET: `{{GET}}/order/view/orderId`
 
 نمونه ریکوست:
 
-{{URL}}/api/order/view/647f79a41abb3ad00910c3d1
+`{{URL}}/api/order/view/647f79a41abb3ad00910c3d1`
 
 
 پاسخ دریافت شده:
@@ -652,7 +652,7 @@ GET: {{GET}}/order/view/orderId
 
 
 
-POST: {{URL}}/api/comment/create
+POST: `{{URL}}/api/comment/create`
 
 | فیلد | نوع | توضیحات |
 | :---:  | :---:  |  ---: |
@@ -701,7 +701,7 @@ POST: {{URL}}/api/comment/create
 
 برای دریافت اطلاعات همه محصولات به این آدرس درخواست GET ارسال کنید
 
-GET {{URL}}/api/product
+GET `{{URL}}/api/product`
 
 پاسخ دریافت شده
 
@@ -781,7 +781,7 @@ GET {{URL}}/api/product
 
 به عنوان مثال ما میخواهیم محصولی که عنوان آن Slash pants است دریافت شود
 
-GET {{URL}}/api/product؟search=Slash pants
+GET `{{URL}}/api/product?search=Slash pants`
 
 پاسخ دریافت شده:
 ``` json
@@ -829,7 +829,7 @@ GET {{URL}}/api/product؟search=Slash pants
 
 برای دریافت محصولاتی که در یک دسته بندی خاص هستند به آدرس زیر درخواست GET ارسال کنید
 
-GET {{URL}}/api/product?category=t-shirts
+GET `{{URL}}/api/product?category=t-shirts`
 
 پاسخ دریافت شده:
 
@@ -910,11 +910,11 @@ GET {{URL}}/api/product?category=t-shirts
 
 برای مشاهده محصول تکی باید بصورت زیر به url درخواست GET ارسال کنید
 
-GET {{URL}}/api/product/productId
+GET `{{URL}}/api/product/productId`
 
 نمونه 
 
-GET {{URL}}/api/product/64a9988b69ea51d88393fd6b
+GET `{{URL}}/api/product/64a9988b69ea51d88393fd6b`
 
 پاسخ دریافت شده:
 
@@ -972,9 +972,9 @@ GET {{URL}}/api/product/64a9988b69ea51d88393fd6b
 
 
 
-GET {{URL}}/api/product/comments/productId
+GET `{{URL}}/api/product/comments/productId`
 
-GET {{URL}}/api/product/comments/64a9988b69ea51d88393fd6b
+GET `{{URL}}/api/product/comments/64a9988b69ea51d88393fd6b`
 
 پاسخ دریافتی:
 
@@ -1038,7 +1038,7 @@ GET {{URL}}/api/product/comments/64a9988b69ea51d88393fd6b
 
 برای پرداخت آنلاین به آدرس زیر با متد Post درخواست ارسال کنید:
 
-POST: {{URL}}/api/payment
+POST: `{{URL}}/api/payment`
 
 پاسخ دریافت شده:
 
@@ -1076,18 +1076,18 @@ POST: {{URL}}/api/payment
 
 نمونه تراکنش موفق که کاربر از طرف درگاه پرداخت به فرانت منتقل شده است:
 
-{{URL}}?Authority=A00000000000000000000000000403047345&Status=OK
+`{{URL}}?Authority=A00000000000000000000000000403047345&Status=OK`
 
 نمونه تراکنش ناموفق که کاربر از طرف درگاه پرداخت به فرانت منتقل شده است:
 
-{{URL}}?Authority=A00000000000000000000000000403047345&Status=NOK
+`{{URL}}?Authority=A00000000000000000000000000403047345&Status=NOK`
 
 نکته: در حال حاضر تنها درگاه پرداخت تنظیم شده زرین پال می‌باشد.
 
 برای بررسی پرداخت انجام شده به آدرس زیر درخواست خود را با متد POST ارسال کنید:
 
 
-POST: {{URL}}/api/payment/checkout
+POST: `{{URL}}/api/payment/checkout`
 
 | فیلد | نوع | توضیحات |
 | :---:  | :---:  |  ---: |
@@ -1137,7 +1137,7 @@ POST: {{URL}}/api/payment/checkout
 
 برای افزودن آدرس به مسیر زیر درخواست POST ارسال کنید
 
-POST: {{URL}}/api/address/add
+POST: `{{URL}}/api/address/add`
 
 نمونه درخواست ارسالی:
 
@@ -1180,11 +1180,11 @@ POST: {{URL}}/api/address/add
 
 برای بروزرسانی آدرس به مسیر زیر درخواست PUT ارسال کنید
 
-PUT: {{URL}}/api/address/update/:addressId
+PUT: `{{URL}}/api/address/update/:addressId`
 
 نمونه درخواست ارسالی:
 
-PUT: {{URL}}/api/address/update/64ea417e1163f4e83605e576
+PUT: `{{URL}}/api/address/update/64ea417e1163f4e83605e576`
 
 
 ``` json
@@ -1225,7 +1225,7 @@ PUT: {{URL}}/api/address/update/64ea417e1163f4e83605e576
 
 برای فهرست گیری از آدرس های پستی خریدار به آدرس زیر با متد GET درخواست ارسال کنید:
 
-GET: {{URL}}/api/address/list
+GET: `{{URL}}/api/address/list`
 
 نمونه درخواست ارسالی:
 
@@ -1255,11 +1255,11 @@ GET: {{URL}}/api/address/list
 برای دریافت جزئیات آدرس پستی یک کاربر به ادرس زیر با متد GET درخواست ارسال کنید:
 
 
-GET: {{URL}}/api/address/view/:addressId
+GET: `{{URL}}/api/address/view/:addressId`
 
 نمونه درخواست ارسالی:
 
-GET: {{URL}}/api/address/view/64ea45001163f4e83605e57e
+GET: `{{URL}}/api/address/view/64ea45001163f4e83605e57e`
 
 پاسخ دریافتی:
 
@@ -1287,11 +1287,11 @@ GET: {{URL}}/api/address/view/64ea45001163f4e83605e57e
 
 برای حذف یک آدرس به مسیر زیر درخواست DELETE ارسال کنید:
 
-DELETE: {{URL}}/api/address/delete/:addressId
+DELETE: `{{URL}}/api/address/delete/:addressId`
 
 نمونه درخواست ارسالی:
 
-DELETE: {{URL}}/api/address/delete/64ea45001163f4e83605e57e
+DELETE: `{{URL}}/api/address/delete/64ea45001163f4e83605e57e`
 
 
 پاسخ دریافتی:
@@ -1335,7 +1335,7 @@ DELETE: {{URL}}/api/address/delete/64ea45001163f4e83605e57e
 
 ## افزودن دسته بندی
 
-POST: {{URL}}/api/admin/category/create
+POST: `{{URL}}/api/admin/category/create`
 
 | فیلد | نوع | توضیحات |
 | :---:  | :---:  |  ---: |
@@ -1374,9 +1374,9 @@ POST: {{URL}}/api/admin/category/create
 
 ## بروزرسانی دسته بندی
 
-POST: {{URL}}/api/admin/category/64b2e3be8936f0ca5aa6d777
+POST: `{{URL}}/api/admin/category/64b2e3be8936f0ca5aa6d777`
 
-PUT: {{URL}}/api/admin/category/categoryId
+PUT: `{{URL}}/api/admin/category/categoryId`
 
 نمونه درخواست ارسال شده:
 
@@ -1406,9 +1406,9 @@ PUT: {{URL}}/api/admin/category/categoryId
 
 ## حذف دسته بندی
 
-ِDELETE: {{URL}}/api/admin/category/64b2e8059f0bd229c9be768e
+ِDELETE: `{{URL}}/api/admin/category/64b2e8059f0bd229c9be768e`
 
-ِDELETE: {{URL}}/api/admin/category/categoryId
+ِDELETE: `{{URL}}/api/admin/category/categoryId`
 
 پاسخ دریافتی:
 
@@ -1423,7 +1423,7 @@ PUT: {{URL}}/api/admin/category/categoryId
 
 ## دریافت همه دسته بندی ها
 
-GET: {{URL}}/api/admin/category
+GET: `{{URL}}/api/admin/category`
 
 پاسخ دریافتی:
 
@@ -1461,7 +1461,7 @@ GET: {{URL}}/api/admin/category
 
 برای مشاهده همه دیدگاه ها به آدرس زیر درخواست GET ارسال کنید
 
-GET: {{URL}}/api/api/admin/comment
+GET: `{{URL}}/api/api/admin/comment`
 
 پاسخ دریافتی:
 
@@ -1512,11 +1512,11 @@ GET: {{URL}}/api/api/admin/comment
 
 ## حذف دیدگاه 
 
-ٍِDELETE: {{URL}}/api/api/admin/comment/64b43374a3d11ba96fa36bce
+ٍِDELETE: `{{URL}}/api/api/admin/comment/64b43374a3d11ba96fa36bce`
 
 نکته بعد از حذف یک  دیدگاه اگر دیدگاه زیر مجموعه ای داشته باشد هم حذف خواهند شد
 
-ٍِDELETE: {{URL}}/api/api/admin/comment/commentId
+ٍِDELETE: `{{URL}}/api/api/admin/comment/commentId`
 
 پاسخ دریافتی:
 
@@ -1545,10 +1545,10 @@ GET: {{URL}}/api/api/admin/comment
 
 ## تایید یک دیدگاه از طرف مدیر سایت برای اینکه قابل مشاهده در سایت شود
 
-PUT: {{URL}}/api/api/admin/comment/64b43374a3d11ba96fa36bce/approve
+PUT: `{{URL}}/api/api/admin/comment/64b43374a3d11ba96fa36bce/approve`
 
 
-PUT: {{URL}}/api/api/admin/comment/commentId/approve
+PUT: `{{URL}}/api/api/admin/comment/commentId/approve`
 
 پاسخ دریافتی:
 
@@ -1586,7 +1586,7 @@ PUT: {{URL}}/api/api/admin/comment/commentId/approve
 
 برای افزودن فایل به آدرس زیر درخواست POST ارسال کنید
 
-POST: {{URL}}/api/api/admin/file/upload
+POST: `{{URL}}/api/api/admin/file/upload`
 
 
 پاسخ دریافتی:
@@ -1619,7 +1619,7 @@ POST: {{URL}}/api/api/admin/file/upload
 
 ## بروزرسانی اطلاعات فایل
 
-PATCH: {{URL}}/api/admin/file/update/:fileId
+PATCH: `{{URL}}/api/admin/file/update/:fileId`
 
 
 | فیلد | نوع | توضیحات |
@@ -1627,7 +1627,7 @@ PATCH: {{URL}}/api/admin/file/update/:fileId
 | name* | string | نام جدید فایل  | 
 | userId* | ObjectId | شناسه مالک جدید   | 
 
-PATCH: {{URL}}/api/admin/file/update/64b54755937ea0ffaa2e0525
+PATCH: `{{URL}}/api/admin/file/update/64b54755937ea0ffaa2e0525`
 
 نمونه درخواست ارسال شده:
 
@@ -1663,9 +1663,9 @@ PATCH: {{URL}}/api/admin/file/update/64b54755937ea0ffaa2e0525
 
 برای حذف یک فایل باید به آدرس زیر با متد Delete درخواست ارسال کنید:
 
-DELETE: {{URL}}/api/admin/file/delete/:fileId
+DELETE: `{{URL}}/api/admin/file/delete/:fileId`
 
-DELETE: {{URL}}/api/admin/file/delete/645fe437c45c6682f650651e
+DELETE: `{{URL}}/api/admin/file/delete/645fe437c45c6682f650651e`
 
 پاسخ دریافتی:
 
@@ -1692,7 +1692,7 @@ DELETE: {{URL}}/api/admin/file/delete/645fe437c45c6682f650651e
 
 برای مشاهده فایل های ساخته شده توسط مدیر سایت به آدرس زیر درخواست GET ارسال کنید
 
-GET: {{URL}}/api/admin/file/list
+GET: `{{URL}}/api/admin/file/list`
 
 پاسخ دریافتی:
 
@@ -1733,9 +1733,9 @@ GET: {{URL}}/api/admin/file/list
 
 برای مشاهده یک فایل به آدرس  زیر درخواست GET ارسال کنید
 
-GET: {{URL}}/api/admin/file/view/fileId
+GET: `{{URL}}/api/admin/file/view/fileId`
 
-GET: {{URL}}/api/admin/file/view/644a78aea7fac85d554
+GET: `{{URL}}/api/admin/file/view/644a78aea7fac85d554`
 
 پاسخ دریافتی:
 
@@ -1764,7 +1764,7 @@ GET: {{URL}}/api/admin/file/view/644a78aea7fac85d554
 
 برای افزودن محصول به وبسایت به آدرس زیر درخواست POST ارسال کنید
 
-POST: {{URL}}/api/admin/product/create
+POST: `{{URL}}/api/admin/product/create`
 
 | فیلد | نوع | توضیحات |
 | :---:  | :---:  |  ---: |
@@ -1816,7 +1816,7 @@ POST: {{URL}}/api/admin/product/create
 
 برای بروزرسانی محصول  به آدرس زیر درخواست PUT ارسال کنید
 
-PUT: {{URL}}/api/admin/product/:productId
+PUT: `{{URL}}/api/admin/product/:productId`
 
 | فیلد | نوع | توضیحات |
 | :---:  | :---:  |  ---: |
@@ -1834,7 +1834,7 @@ PUT: {{URL}}/api/admin/product/:productId
 
 نمونه درخواست ارسال شده:
 
-PUT: {{URL}}/api/admin/product/64b7fb593e474c037fb428d3
+PUT: `{{URL}}/api/admin/product/64b7fb593e474c037fb428d3`
 
 
 ``` json
@@ -1875,9 +1875,9 @@ PUT: {{URL}}/api/admin/product/64b7fb593e474c037fb428d3
 
 برای حذف یک محصول به آدرس زیر درخواست DELETE ارسال کنید
 
-DELETE: {{URL}}/api/admin/product/64b80ce92798792c74a79382
+DELETE: `{{URL}}/api/admin/product/64b80ce92798792c74a79382`
 
-DELETE: {{URL}}/api/admin/product/:productId
+DELETE: `{{URL}}/api/admin/product/:productId`
 
 پاسخ دریافتی:
 
@@ -1895,9 +1895,9 @@ DELETE: {{URL}}/api/admin/product/:productId
 
 برای مشاهده اطلاعات یک محصول به آدرس زیر درخواست GET ارسال کنید
 
-GET: {{URL}}/api/admin/product/64b7fb593e474c037fb428d3
+GET: `{{URL}}/api/admin/product/64b7fb593e474c037fb428d3`
 
-GET: {{URL}}/api/admin/product/:productId
+GET: `{{URL}}/api/admin/product/:productId`
 
 پاسخ دریافتی:
 
@@ -2083,12 +2083,12 @@ GET: {{URL}}/api/admin/product/:productId
 برای دریافت یک محصول در یک دسته بندی مشخص بصورت زیر میتوانید یک درخواست ارسال کنید
 
 
-GET: {{URL}}/api/admin/product?category=category-one
+GET: `{{URL}}/api/admin/product?category=category-one`
 
 
 
 
-GET: {{URL}}/api/admin/product?category=categoryName 
+GET: `{{URL}}/api/admin/product?category=categoryName` 
 
 به جای categoryName اسم دسته بندی خود را وارد کنید
 
@@ -2155,9 +2155,9 @@ GET: {{URL}}/api/admin/product?category=categoryName
 
 برای جستجو در محصولات به آدرس زیر درخواست GET ارسال کنید
 
-GET: {{URL}}/api/admin/product?search=react js
+GET: `{{URL}}/api/admin/product?search=react js`
 
-GET: {{URL}}/api/admin/product?search=productTitle
+GET: `{{URL}}/api/admin/product?search=productTitle`
 
 پاسخ دریافتی:
 
@@ -2223,7 +2223,7 @@ GET: {{URL}}/api/admin/product?search=productTitle
 برای ساخت یک کاربر جدید به آدرس زیر درخواست POST ارسال کنید
 
 
-POST: {{URL}}/api/admin/user/create
+POST: `{{URL}}/api/admin/user/create`
 
 نمونه درخواست:
 
@@ -2257,13 +2257,13 @@ POST: {{URL}}/api/admin/user/create
 برای ویرایش کردن اطلاعات کاربر به آدرس زیر درخواست PUT ارسال کنید
 
 
-POST: {{URL}}/api/admin/user/:userId
+POST: `{{URL}}/api/admin/user/:userId`
 
 
 
 نمونه درخواست:
 
-POST: {{URL}}/api/admin/user/64bebca6e321e8706eb818b6
+POST: `{{URL}}/api/admin/user/64bebca6e321e8706eb818b6`
 
 
 ``` json
@@ -2293,13 +2293,13 @@ POST: {{URL}}/api/admin/user/64bebca6e321e8706eb818b6
 
 برای حدف کاربر کافیست به آدرس زیر درخواست DELETE ارسال کنید
 
-DELETE: {{URL}}/api/admin/user/:userId
+DELETE: `{{URL}}/api/admin/user/:userId`
 
 
 
 نمونه درخواست:
 
-DELETE: {{URL}}/api/admin/user/64bebca6e321e8706eb818b6
+DELETE: `{{URL}}/api/admin/user/64bebca6e321e8706eb818b6`
 
 
 پاسخ دریافتی:
@@ -2321,13 +2321,13 @@ DELETE: {{URL}}/api/admin/user/64bebca6e321e8706eb818b6
 برای اینکه کاربر عادی را تبدیل کنید به مدیر سایت تا بتواند تمام قسمت های سایت را مدیریت کند به آدرس زیر درخواست PUT ارسال کنید
 
 
-PUT: {{URL}}/api/admin/user/accessadmin/:userId
+PUT: `{{URL}}/api/admin/user/accessadmin/:userId`
 
 
 
 نمونه درخواست:
 
-PUT: {{URL}}/api/admin/user/accessadmin/64a450f699e30131c22aa7de
+PUT: `{{URL}}/api/admin/user/accessadmin/64a450f699e30131c22aa7de`
 
 پاسخ دریافتی:
 
@@ -2351,7 +2351,7 @@ PUT: {{URL}}/api/admin/user/accessadmin/64a450f699e30131c22aa7de
 
 برای مشاهده اطلاعات همه کاربران به آدرس زیر درخواست GET ارسال کنید
 
-GET: {{URL}}/api/admin/user
+GET: `{{URL}}/api/admin/user`
 
 پاسخ دریافتی:
 
@@ -2396,7 +2396,7 @@ GET: {{URL}}/api/admin/user
 
 ## دریافت 5 کاربر ثبت نام شده اخیر
 
-GET: {{URL}}/api/admin/user?new=true
+GET: `{{URL}}/api/admin/user?new=true`
 
 با ارسال این درخواست فقط 5 کاربر جدید سایت برگشت داده میشود
 
@@ -2447,7 +2447,7 @@ GET: {{URL}}/api/admin/user?new=true
 
 برای مشاهده همه سفارشات موفق آمیز به آدرس زیر درخواست GET ارسال کنید
 
-GET: {{URL}}/api/admin/order
+GET: `{{URL}}/api/admin/order`
 
 پاسخ دریافتی:
 
@@ -2508,11 +2508,11 @@ GET: {{URL}}/api/admin/order
 برای حذف یک سفارش ثبت شده به آدرس زیر درخواست DELETE ارسال کنید
 
 
-DELETE: {{URL}}/api/admin/order/:orderId
+DELETE: `{{URL}}/api/admin/order/:orderId`
 
 نمونه درخواست:
 
-DELETE: {{URL}}/api/admin/order/64c27892e31f67a15158f0a3
+DELETE: `{{URL}}/api/admin/order/64c27892e31f67a15158f0a3`
 
 
 پاسخ دریافتی:
@@ -2552,7 +2552,7 @@ DELETE: {{URL}}/api/admin/order/64c27892e31f67a15158f0a3
 برای مشاهده همه سبد خرید ها به آدرس زیر درخواست  GET ارسال کنید
 
 
-GET: {{URL}}/api/admin/cart
+GET: `{{URL}}/api/admin/cart`
 
 پاسخ دریافتی:
 
@@ -2594,7 +2594,7 @@ GET: {{URL}}/api/admin/cart
 
 برای افزودن مکان، (کشور/ایالت|استان/شهر) به آدرس زیر با متد Post درخواست ارسال کنید:
 
-POST: {{URL}}/api/admin/location/add
+POST: `{{URL}}/api/admin/location/add`
 
 
 | فیلد | نوع | توضیحات |
@@ -2711,11 +2711,11 @@ POST: {{URL}}/api/admin/location/add
 
 برای بروزرسانی یک مکان به آدرس زیر درخواست PUT ارسال کنید:
 
-PUT: {{URL}}/api/admin/location/update/:locationId
+PUT: `{{URL}}/api/admin/location/update/:locationId`
 
 نمونه درخواست ارسالی:
 
-PUT: {{URL}}/api/admin/location/update/64ea3330316f9f571f40823b
+PUT: `{{URL}}/api/admin/location/update/64ea3330316f9f571f40823b`
 
 
 ``` json
@@ -2752,7 +2752,7 @@ PUT: {{URL}}/api/admin/location/update/64ea3330316f9f571f40823b
 
 برای دریافت لیست کلیه کشورها به آدرس زیر درخواست GET ارسال کنید:
 
-GET: {{URL}}/api/admin/location/list
+GET: `{{URL}}/api/admin/location/list`
 
 پاسخ دریافتی:
 
@@ -2786,11 +2786,11 @@ GET: {{URL}}/api/admin/location/list
 
 برای دریافت جزئیات و استان ها و شهر های زیر مجموعه یک مکان به آدرس زیر با متد GET درخواست ارسال کنید:
 
-GET: {{URL}}/api/admin/location/view/:locationId
+GET: `{{URL}}/api/admin/location/view/:locationId`
 
 نمونه درخواست ارسالی:
 
-GET: {{URL}}/api/admin/location/view/64ea34e7ed63fc37f380339a
+GET: `{{URL}}/api/admin/location/view/64ea34e7ed63fc37f380339a`
 
 
 ``` json
@@ -2836,11 +2836,11 @@ GET: {{URL}}/api/admin/location/view/64ea34e7ed63fc37f380339a
 
 برای حذف یک مکان به آدرس زیر درخواست DELETE ارسال کنید
 
-DELETE: {{URL}}/api/admin/location/delete/:locationId
+DELETE: `{{URL}}/api/admin/location/delete/:locationId`
 
 نمونه درخواست ارسالی:
 
-DELETE: {{URL}}/api/admin/location/delete/64ea3270316f9f571f408238
+DELETE: `{{URL}}/api/admin/location/delete/64ea3270316f9f571f408238`
 
 
 ``` json
@@ -2868,92 +2868,3 @@ DELETE: {{URL}}/api/admin/location/delete/64ea3270316f9f571f408238
 }
 
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
