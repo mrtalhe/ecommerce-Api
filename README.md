@@ -1,3 +1,5 @@
+See the [Persian version](https://github.com/mrtalhe/ecommerce-Api/blob/main/README.fa.md)<br /><br />
+
 # E-Commerce API
 You can use **E-Commerce API** to set up an online shopping store. The script is written in JavaScript (Node.js), with the help of Express.js, MongoDB, and Mongoose.
 
@@ -125,7 +127,7 @@ After installing the required programs and modules, enter the config folder and 
 {
    "name": "Auth Project", // Project name
    "db": {
-      "address": "mongodb://127.0.0.1:27017/ecommerceApi" //
+      "address": "mongodb://127.0.0.1:27017/ecommerceApi" // Database address
    },
    "jwt_key": "dfsdfff4t5j6h4j5h64564j5h645j6h45jh6", // A reandom value
    "zarinPal":  {
