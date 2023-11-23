@@ -535,7 +535,7 @@ DELET: `{{URL}}/api/cart/delete`
 
 برای مشاهده محصولات افزوده شده به سبد خرید به آدرس زیر با متد Get ریکوست ارسال کنید:
 
-DELETE: `{{URL}}/api/cart/view`
+GET: `{{URL}}/api/cart/view`
 
 مقدار بازگشتی:
 
@@ -1981,6 +1981,8 @@ GET: `{{URL}}/api/admin/product/:productId`
 
 برای دریافت لیست همه محصولات به آدرس زیر درخواست GET ارسال کنید
 
+GET: `{{URL}}/api/admin/product`
+
 ``` json
 {
     "message": "the All products",
@@ -2259,13 +2261,13 @@ POST: `{{URL}}/api/admin/user/create`
 برای ویرایش کردن اطلاعات کاربر به آدرس زیر درخواست PUT ارسال کنید
 
 
-POST: `{{URL}}/api/admin/user/:userId`
+PUT: `{{URL}}/api/admin/user/:userId`
 
 
 
 نمونه درخواست:
 
-POST: `{{URL}}/api/admin/user/64bebca6e321e8706eb818b6`
+PUT: `{{URL}}/api/admin/user/64bebca6e321e8706eb818b6`
 
 
 ``` json
