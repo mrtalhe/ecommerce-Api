@@ -153,24 +153,16 @@ Send a `POST` request to the following address to register users:
 
 POST: `{{URL}}/api/auth/register`
 
-برای ارسال ریکوست به بک اند به فرمت JSON باید طبق دستورالعمل های زیر اقدام کنید، توجه کنید بجای مقدار {{URL}} باید از آدرس سرور مورد نظر خود استفاده کنید.
+| Field | Data Type | Description |
+| :----- | :---------: |  :------------ |
+| username* | String | Username |
+| email* | String | E-mail Address |
+| password* | String | Password |
+| isadmin | Boolean | Access-Level determination (Defaults to `false`) |
+<br />
 
-## ثبت نام در برنامه
-
-برای ثبت نام در برنامه به آدرس زیر با متد Post ریکوست ارسال کنید:
-
-POST: {{URL}}/api/auth/register
-
-| فیلد | نوع | توضیحات |
-| :---:  | :---:  |  ---: |
-| username* | string | نام کاربری |
-| email* | string | آدرس ایمیل کاربر |
-| password* | string | رمز عبور کاربر |
-| isadmin | boolean | فیلد تعیین سطح کاربری (پیشفرض false) |
-
-
-نمونه ریکوست:
-``` json
+Request Example:
+```json
 {
    "username": "Talhe",
    "email": "talhe9990@gmail.com",
@@ -195,10 +187,8 @@ Send a `POST` request to the following address to login:
 
 POST: `{{URL}}/api/auth/login`
 
-POST: {{URL}}/api/auth/login
-
-نمونه ریکوست:
-``` json
+Request Example:
+```json
 {
    "email": "talhe9930@gmail.com",
    "password": "123445678"
@@ -220,13 +210,8 @@ In case of a forgotten password, send a `POST` request to the following address:
 
 POST: `{{URL}}/api/reset/forget`
 
-در صورت فراموشی رمز عبور به آدرس زیر با متد POST درخواست ارسال کنید:
-
-POST: {{URL}}/api/reset/forget
-
-نمونه درخواست:
-
-``` json
+Request Example:
+```json
 {
    "email": "talhe9930@gmail.com"
 }
@@ -235,21 +220,15 @@ If the process is successful, an email will be sent to the user, which contains 
 
 POST: [{{URL}}/api/reset/b5a5e6ffab8e6f4351fde5fe9806bee5f967cf5e7b5ff2ebdc453222f79337b4f54b7e7a82e94f97]()
 
-POST: {{URL}}/api/reset/b5a5e6ffab8e6f4351fde5fe9806bee5f967cf5e7b5ff2ebdc453222f79337b4f54b7e7a82e94f97
+By clicking on the link above, the user will be transferred to the password reset page. Then, the value of the parameter that is in front of the `reset` should be sent to back to the server, along with the new password.
 
 ### Password Recovery
 To recover the password, send a `POST` request to the following address:
 
 POST: `{{URL}}/api/reset/b5a5e6ffab8e6f4351fde5fe9806bee5f967cf5e7b5ff2ebdc453222f79337b4f54b7e7a82e94f97`
 
-برای بازیابی رمز عبور درخواست خود را به آدرس زیر با متد POST ارسال کنید.
-
-
-POST: {{URL}}/api/reset/b5a5e6ffab8e6f4351fde5fe9806bee5f967cf5e7b5ff2ebdc453222f79337b4f54b7e7a82e94f97
-
-نمونه درخواست:
-
-``` json
+Request Example:
+```json
 {
    "password": "mynewpass"
 }
@@ -268,16 +247,9 @@ Send a `GET` request to the following address to receive the user profile.
 
 GET: `{{URL}}/api/user/profile`
 
-
-## دریافت پروفایل
-
-برای دریافت پروفایل کاربر به آدرس زیر درخواست get ارسال کنید
-
-GET: {{URL}}/api/user/profile
-
-مقدار بازگشتی:
-``` json
-{
+Return Value:
+If the login process is done successfully, a [Json Web Token (JWT)](https://jwt.io) will be sent back to you from the server, whose name is `x-auth-token`, and can be used to send authenticated requests to the server.
+```json
 {
    "message": "User Profile",
    "data": {
@@ -292,7 +264,11 @@ Send a `PUT` request to the following address to update the user profile:
 
 PUT: `{{URL}}/api/user/update`
 
-PUT: {{URL}}/api/user/update
+| Field | Data Type | Description |
+| :----  | :---------:  |  :----------- |
+| username* | String | Username |
+| password* | String | Password |
+<br />
 
 Request Example:
 ```json
@@ -317,7 +293,10 @@ Send the product ID to the following address using the `POST` method to add a pr
 
 POST: `{{URL}}/api/cart/create`
 
-POST: {{URL}}/api/cart/create
+| Field | Data Type | Description |
+| :----  | :---------:  |  :----------- |
+| productId* | String | Product ID |
+<br />
 
 Request Example:
 ```json
@@ -363,15 +342,8 @@ PUT: `{{URL}}/api/cart/update`
 | list* | Array | Product ID and quantity |
 <br />
 
-PUT: {{URL}}/api/cart/update
-
-| فیلد | نوع | توضیحات |
-| :---:  | :---:  |  ---: |
-| list* | array | شناسه محصول و تعداد محصول |
-
-
-نمونه ریکوست:
-``` json
+Request Example:
+```json
 {
    "list": [
       {
@@ -423,14 +395,8 @@ Send a `DELETE` request to the following address to clear the shopping cart:
 
 DELET: `{{URL}}/api/cart/delete`
 
-برای خالی کردن سبد خرید به آدرس زیر با متد Delete ریکوست ارسال کنید:
-
-DELET: {{URL}}/api/cart/delete
-
-
-مقدار بازگشتی:
-
-``` json
+Return Value:
+```json
 {
    "message": "the cart successfuly deleted",
    "data": {}
@@ -442,11 +408,8 @@ Send a `GET` request to the following address to view the shopping cart items:
 
 GET: `{{URL}}/api/cart/view`
 
-DELETE: {{URL}}/api/cart/view
-
-مقدار بازگشتی:
-
-``` json
+Return Value:
+```json
 {
    "message": "Cart found",
    "data": {
@@ -477,11 +440,8 @@ For a list of all orders, send a `GET` request to the following address:
 
 GET: `{{URL}}/api/order/list`
 
-GET: {{URL}}/api/order/list
-
-مقدار بازگشتی:
-
-``` json
+Return Value:
+```json
 {
    "message": "the orders",
    "data": [
@@ -516,16 +476,23 @@ Send a `GET` request to the following address to view order details:
 
 GET: `{{URL}}/order/view/orderId`
 
-
-GET: {{GET}}/order/view/orderId
-
-نمونه ریکوست:
-
-{{URL}}/api/order/view/647f79a41abb3ad00910c3d1
-
-
-پاسخ دریافت شده:
-``` json
+Request Example:
+```json
+{
+   "list": [
+      {
+         "productId": "646b64ca38f4f6acf269dda7",
+         "quantity": 50
+      },
+      {
+         "productId": "646b64eb38f4f6acf269ddab",
+         "quantity": 100
+      }
+   ]
+}
+```
+Return Value:
+```json
 {
    "message": "Order found.",
    "data": {
@@ -571,19 +538,8 @@ POST: `{{URL}}/api/comment/create`
 | parent* | ObjectId | To reply to a comment, just add this field and enter the ID of that comment |
 <br />
 
-
-POST: {{URL}}/api/comment/create
-
-| فیلد | نوع | توضیحات |
-| :---:  | :---:  |  ---: |
-| productId* | ObjectId | شناسه محصول |
-| rating* | string | امتیاز محصول کاربر مجاز خواهد بود که از عدد 1 تا5 به یک محصول امتیاز دهد |
-| title* | string |  عنوان دیدگاه |
-| description* | string |  توضیحات  |
-| parent* | ObjectId |  برای پاسخ به یک دیدگاه کافیست این فیلد را اضافه کنید و شناسه آن دیدگاه را وارد کنید  |
-
-نمونه درخواست:
-``` json
+Request Example:
+```json
 {
    "productId": "646b64ca38f4f6acf269dda7",
    "rating": "5",
@@ -622,11 +578,8 @@ For a list of all products, send a `GET` request to the following address with:
 
 GET: `{{URL}}/api/product`
 
-GET {{URL}}/api/product
-
-پاسخ دریافت شده
-
-``` json
+Return Value:
+```json
 {
    "message": "the All products!",
    "data": [
@@ -703,10 +656,8 @@ To search for a product, send a `GET` request to the following address and pass 
 
 GET: `{{URL}}/api/product?search=Slash pants`
 
-GET {{URL}}/api/product؟search=Slash pants
-
-پاسخ دریافت شده:
-``` json
+Return Value:
+```json
 {
    "message": "the product",
    "data": [
@@ -751,14 +702,8 @@ For a list of all products based on a specific category, send a `GET` request to
 
 GET: `{{URL}}/api/product?category=t-shirts`
 
-برای دریافت محصولاتی که در یک دسته بندی خاص هستند به آدرس زیر درخواست GET ارسال کنید
-
-GET {{URL}}/api/product?category=t-shirts
-
-پاسخ دریافت شده:
-
-
-``` json
+Return Value:
+```json
 {
    "message": "the product",
    "data": [
@@ -835,15 +780,12 @@ To get a single product, send a `GET` request to the following address with the 
 
 GET: `{{URL}}/api/product/productId`
 
-GET {{URL}}/api/product/productId
+or
 
 GET: `{{URL}}/api/product/64a9988b69ea51d88393fd6b`
 
-GET {{URL}}/api/product/64a9988b69ea51d88393fd6b
-
-پاسخ دریافت شده:
-
-``` json
+Return Value:
+```json
 {
    "message": "the product",
    "data": {
@@ -900,13 +842,8 @@ or
 
 GET: `{{URL}}/api/product/64a9988b69ea51d88393fd6b`
 
-GET {{URL}}/api/product/comments/productId
-
-GET {{URL}}/api/product/comments/64a9988b69ea51d88393fd6b
-
-پاسخ دریافتی:
-
-``` json
+Return Value:
+```json
 {
    "message": "comments of this product",
    "data": [
@@ -966,13 +903,8 @@ For online payment, send a `POST` request to the following address:
 
 POST: `{{URL}}/api/payment`
 
-برای پرداخت آنلاین به آدرس زیر با متد Post درخواست ارسال کنید:
-
-POST: {{URL}}/api/payment
-
-پاسخ دریافت شده:
-
-``` json
+Return Value:
+```json
 {
    "data": {
       "info": {
@@ -1023,19 +955,8 @@ POST: `{{URL}}/api/payment/checkout`
 | Status* | String | *OK* or *NOK* |
 <br />
 
-POST: {{URL}}/api/payment/checkout
-
-| فیلد | نوع | توضیحات |
-| :---:  | :---:  |  ---: |
-| Authority* | string | شناسه پرداخت |
-| Status* | string | مقدار NOK یا OK |
-
-در صورت دریافت OK مقدار OK را بازگردانید و در صورت دریافت مقدار NOK همان را بازگردانید.
-
-درخواست نمونه
-
-
-``` json
+Request Example:
+```json
 {
    "Authority":"A00000000000000000000000000444068040",
    "Status":"OK"
@@ -1071,15 +992,8 @@ To add an address, send a `POST` request to the following address:
 
 POST: `{{URL}}/api/address/add`
 
-برای افزودن آدرس به مسیر زیر درخواست POST ارسال کنید
-
-POST: {{URL}}/api/address/add
-
-نمونه درخواست ارسالی:
-
-
-``` json
-
+Request Example:
+```json
 {
    "country": "64ea34e7ed63fc37f380339a",
    "provState": "64ea3330316f9f571f40823b",
@@ -1112,15 +1026,12 @@ To update an address, send a `PUT` request to the following address. For example
 
 PUT: `{{URL}}/api/address/update/:addressId`
 
-PUT: {{URL}}/api/address/update/:addressId
+or
 
 PUT: `{{URL}}/api/address/update/64ea417e1163f4e83605e576`
 
-PUT: {{URL}}/api/address/update/64ea417e1163f4e83605e576
-
-
-``` json
-
+Request Example:
+```json
 {
   "country": "64ea34e7ed63fc37f380339a",
    "provState": "64ea3330316f9f571f40823b",
@@ -1153,15 +1064,8 @@ To get a list of all addresses, send a `GET` request to the following address:
 
 GET: `{{URL}}/api/address/list`
 
-GET: {{URL}}/api/address/list
-
-نمونه درخواست ارسالی:
-
-
-پاسخ دریافتی:
-
-``` json
-
+Return Value:
+```json
 {
    "message": "Address found.",
    "data": [
@@ -1184,16 +1088,10 @@ GET: `{{URL}}/api/address/view/:addressId`
 
 or
 
-GET: {{URL}}/api/address/view/:addressId
+GET: `{{URL}}/api/address/view/64ea45001163f4e83605e57e`
 
-نمونه درخواست ارسالی:
-
-GET: {{URL}}/api/address/view/64ea45001163f4e83605e57e
-
-پاسخ دریافتی:
-
-``` json
-
+Return Value:
+```json
 {
    "message": "Address found.",
    "data": {
@@ -1216,17 +1114,12 @@ To delete an address, send a `DELETE` request to the following address. For exam
 
 DELETE: `{{URL}}/api/address/view/:addressId`
 
-DELETE: {{URL}}/api/address/delete/:addressId
+or
 
 DELETE: `{{URL}}/api/address/view/64ea45001163f4e83605e57e`
 
-DELETE: {{URL}}/api/address/delete/64ea45001163f4e83605e57e
-
-
-پاسخ دریافتی:
-
-``` json
-
+Return Value:
+```json
 {
    "message": "Address deleted.",
    "data": {
@@ -1259,30 +1152,8 @@ PUT: `{{URL}}/api/admin/category/create`
 | parent* | ObjectId | If you want this category to be a subset of another category, enter the parent category ID (Optional) |
 <br />
 
-
-
-## نکته مهم
-
-## دوستان عزیز توجه کنید امکاناتی که از این پس مشاهده میکنید فقط مختص مدیر اصلی وبسایت میباشد
-
-
-
-
-
-## مدیریت دسته بندی ها
-
-## افزودن دسته بندی
-
-POST: {{URL}}/api/admin/category/create
-
-| فیلد | نوع | توضیحات |
-| :---:  | :---:  |  ---: |
-| name* | string |  اسم دسته بندی |
-| parent* | ObjectId | (اختیاری) اگر مایل بودید این دسته بندی زیر مجموعه یک دسته بندی دیگر شود آیدی ان دسته بندی را وارد کنید |
-
-نمونه درخواست:
-
-``` json
+Request Example:
+```json
 {
    "name": "new Category"
 }
@@ -1311,9 +1182,9 @@ To update a category, send a `POST` request to the following address. For exampl
 
 POST: `{{URL}}/api/admin/category/:categoryId`
 
-POST: {{URL}}/api/admin/category/64b2e3be8936f0ca5aa6d777
+or
 
-PUT: {{URL}}/api/admin/category/categoryId
+POST: `{{URL}}/api/admin/category/64b2e3be8936f0ca5aa6d777`
 
 Request Example:
 ```json
@@ -1341,9 +1212,9 @@ Return Value:
 ### Delete Category
 To delete a category, send a `DELETE` request to the following address. For example, if the `categoryId` is *64b2e8059f0bd229c9be768e*:
 
-ِDELETE: {{URL}}/api/admin/category/64b2e8059f0bd229c9be768e
+DELETE: `{{URL}}/api/admin/category/:categoryId`
 
-ِDELETE: {{URL}}/api/admin/category/categoryId
+or
 
 DELETE: `{{URL}}/api/admin/category/64b2e8059f0bd229c9be768e`
 
@@ -1396,14 +1267,8 @@ To get all comments, send a `GET` request to the following address:
 
 GET: `{{URL}}/api/admin/comment`
 
-برای مشاهده همه دیدگاه ها به آدرس زیر درخواست GET ارسال کنید
-
-GET: {{URL}}/api/api/admin/comment
-
-پاسخ دریافتی:
-
-
-``` json
+Return Value:
+```json
 {
    "message": "the All Comments",
    "data": [
@@ -1450,11 +1315,11 @@ GET: {{URL}}/api/api/admin/comment
 ### Delete Comment
 To delete a comment, send a `DELETE` request to the following address. For example, if the `commentId` is *64b43374a3d11ba96fa36bce*:
 
-ٍِDELETE: {{URL}}/api/api/admin/comment/64b43374a3d11ba96fa36bce
+DELETE: `{{URL}}/api/admin/category/:categoryId`
 
 or
 
-ٍِDELETE: {{URL}}/api/api/admin/comment/commentId
+DELETE: `{{URL}}/api/admin/category/64b43374a3d11ba96fa36bce`
 
 Return Value:
 ```json
@@ -1483,11 +1348,11 @@ Return Value:
 ### Approve Comment
 To approve a comment and make it visible to all users, send a `PUT` request to the following address. For example, if the `commentId` is *64b43374a3d11ba96fa36bce*:
 
-PUT: {{URL}}/api/api/admin/comment/64b43374a3d11ba96fa36bce/approve
+PUT: `{{URL}}/api/api/admin/comment/commentId/approve`
 
 or
 
-PUT: {{URL}}/api/api/admin/comment/commentId/approve
+PUT: `{{URL}}/api/api/admin/comment/64b43374a3d11ba96fa36bce/approve`
 
 Return Value:
 ```json
@@ -1520,17 +1385,8 @@ To add a file, send a `POST` request to the following address:
 
 POST: `{{URL}}/api/api/admin/file/upload`
 
-## افزودن فایل
-
-
-برای افزودن فایل به آدرس زیر درخواست POST ارسال کنید
-
-POST: {{URL}}/api/api/admin/file/upload
-
-
-پاسخ دریافتی:
-
-``` json
+Return Value:
+```json
 {
    "message": "The File Successfully Added!",
    "data": [
@@ -1560,19 +1416,14 @@ or
 
 PATCH: `{{URL}}/api/admin/file/update/64b54755937ea0ffaa2e0525`
 
-PATCH: {{URL}}/api/admin/file/update/:fileId
+| Field | Data Type | Description |
+| :----- | :---------- |  :----------- |
+| name* | String | New file name |
+| userId* | ObjectId | New owner's ID |
+<br />
 
-
-| فیلد | نوع | توضیحات |
-| :---:  | :---:  |  ---: |
-| name* | string | نام جدید فایل  | 
-| userId* | ObjectId | شناسه مالک جدید   | 
-
-PATCH: {{URL}}/api/admin/file/update/64b54755937ea0ffaa2e0525
-
-نمونه درخواست ارسال شده:
-
-``` json
+Request Example:
+```json
 {
    "name": "new name",
    "userId": "64a450f699e30131c22aa7de"
@@ -1603,7 +1454,7 @@ To delete a file, send a `DELETE` request to the following address. For example,
 
 DELETE: `{{URL}}/api/admin/file/delete/:fileId`
 
-DELETE: {{URL}}/api/admin/file/delete/:fileId
+or
 
 DELETE: `{{URL}}/api/admin/file/delete/645fe437c45c6682f650651e`
 
@@ -1632,12 +1483,8 @@ To get a list of all files, send a `GET` request to the following address:
 
 GET: `{{URL}}/api/admin/file/list`
 
-GET: {{URL}}/api/admin/file/list
-
-پاسخ دریافتی:
-
-
-``` json
+Return Value:
+```json
 {
    "message": "The All Files. ",
    "data": [
@@ -1674,7 +1521,7 @@ To view a file, send a `GET` request to the following address. For example, if t
 
 GET: `{{URL}}/api/admin/file/view/:fileId`
 
-GET: {{URL}}/api/admin/file/view/fileId
+or
 
 GET: `{{URL}}/api/admin/file/view/644a78aea7fac85d554`
 
@@ -1715,22 +1562,8 @@ POST: `{{URL}}/api/admin/product/create`
 | price* | String | Product price |
 <br />
 
-POST: {{URL}}/api/admin/product/create
-
-| فیلد | نوع | توضیحات |
-| :---:  | :---:  |  ---: |
-| title* | string | نام محصول   | 
-| description* | string |   توضیحات محصول   | 
-| mindescription* | string |   توضیحات مختصر محصول   | 
-| images* | objectId |    main شامل تصویر اصلی میباشد و gallery شامل گالری تصاویر میباشد   | 
-| categories* | objectId |   دسته بندی محصول   | 
-| size* | string |  سایز محصول   | 
-| color* | string |  رنگ محصول   | 
-| price* | string |  قیمت محصول محصول   | 
-
-نمونه درخواست ارسال شده:
-
-``` json
+Request Example:
+```json
 {
    "title": "react js course",
    "description": "The library for web and native user interfaces.",
@@ -1766,7 +1599,7 @@ To update a product, send a `PUT` request to the following address. For example,
 
 PUT: `{{URL}}/api/admin/product/:productId`
 
-PUT: {{URL}}/api/admin/product/:productId
+or
 
 PUT: `{{URL}}/api/admin/product/64b7fb593e474c037fb428d3`
 
@@ -1783,13 +1616,8 @@ PUT: `{{URL}}/api/admin/product/64b7fb593e474c037fb428d3`
 | owner* | String | Owner ID (defaults to the ID of the website owner) |
 <br />
 
-
-نمونه درخواست ارسال شده:
-
-PUT: {{URL}}/api/admin/product/64b7fb593e474c037fb428d3
-
-
-``` json
+Request Example:
+```json
 {
    "title": "node Js course updated",
    "description": "Node.js® is an open-source, cross-platform JavaScript runtime environment.",
@@ -1826,9 +1654,9 @@ To delete a product, send a `DELETE` request to the following address. For examp
 
 DELETE: `{{URL}}/api/admin/product/:productId`
 
-DELETE: {{URL}}/api/admin/product/64b80ce92798792c74a79382
+or
 
-DELETE: {{URL}}/api/admin/product/:productId
+DELETE: `{{URL}}/api/admin/product/64b80ce92798792c74a79382`
 
 Return Value:
 ```json
@@ -1846,9 +1674,9 @@ To view a single product, send a `GET` request to the following address. For exa
 
 GET: `{{URL}}/api/admin/product/:productId`
 
-GET: {{URL}}/api/admin/product/64b7fb593e474c037fb428d3
+or
 
-GET: {{URL}}/api/admin/product/:productId
+GET: `{{URL}}/api/admin/product/64b7fb593e474c037fb428d3`
 
 Return Value:
 ```json
@@ -2039,20 +1867,8 @@ or
 
 GET: `{{URL}}/api/admin/product?category=category-one`
 
-
-
-
-GET: {{URL}}/api/admin/product?category=categoryName 
-
-به جای categoryName اسم دسته بندی خود را وارد کنید
-
-
-در پاسخ به ما محصولاتی را نشان میدهد که در دسته بندی categoty-one قرار دارند
-
-پاسخ دریافتی:
-
-
-``` json
+Return Value:
+```json
 {
    "message": "the product",
    "data": [
@@ -2110,13 +1926,8 @@ To search for a product, send a `GET` request to the following address and pass 
 
 GET: `{{URL}}/api/product?search=Slash pants`
 
-GET: {{URL}}/api/admin/product?search=react js
-
-GET: {{URL}}/api/admin/product?search=productTitle
-
-پاسخ دریافتی:
-
-``` json
+Return Value:
+```json
 {
    "message": "the product",
    "data": [
@@ -2174,18 +1985,8 @@ To add a new user, send a `POST` request to the following address:
 
 POST: `{{URL}}/api/admin/user/create`
 
-
-## افزودن کاربر
-
-برای ساخت یک کاربر جدید به آدرس زیر درخواست POST ارسال کنید
-
-
-POST: {{URL}}/api/admin/user/create
-
-نمونه درخواست:
-
-
-``` json
+Request Example:
+```json
 {
    "email": "morteza@gmail.com",
    "username": "morteza",
@@ -2213,16 +2014,8 @@ or
 
 PUT: `{{URL}}/api/admin/product/64bebca6e321e8706eb818b6`
 
-POST: {{URL}}/api/admin/user/:userId
-
-
-
-نمونه درخواست:
-
-POST: {{URL}}/api/admin/user/64bebca6e321e8706eb818b6
-
-
-``` json
+Request Example:
+```json
 {
    "email": "morteza2@gmail.com",
    "username": "newusername",
@@ -2246,20 +2039,12 @@ To update user information, send a `DELETE` request to the following address. Fo
 
 DELETE: `{{URL}}/api/admin/user/:userId`
 
-DELETE: {{URL}}/api/admin/user/:userId
+or
 
 DELETE: `{{URL}}/api/admin/product/64bebca6e321e8706eb818b6`
 
-
-نمونه درخواست:
-
-DELETE: {{URL}}/api/admin/user/64bebca6e321e8706eb818b6
-
-
-پاسخ دریافتی:
-
-
-``` json
+Return Value:
+```json
 {
    "message": "the user successfuly deleted",
    "data": {
@@ -2277,18 +2062,10 @@ PUT : `{{URL}}/api/admin/user/:userId`
 
 or
 
-PUT: {{URL}}/api/admin/user/accessadmin/:userId
+PUT : `{{URL}}/api/admin/product/64a450f699e30131c22aa7de`
 
-
-
-نمونه درخواست:
-
-PUT: {{URL}}/api/admin/user/accessadmin/64a450f699e30131c22aa7de
-
-پاسخ دریافتی:
-
-
-``` json
+Return Value:
+```json
 {
    "message": "The user has successfully become an administrator",
    "data": {
@@ -2307,13 +2084,8 @@ To view all users, send a `GET ` request to the following address:
 
 GET : `{{URL}}/api/admin/user`
 
-برای مشاهده اطلاعات همه کاربران به آدرس زیر درخواست GET ارسال کنید
-
-GET: {{URL}}/api/admin/user
-
-پاسخ دریافتی:
-
-``` json
+Return Value:
+```json
 {
    "message": "the All users",
    "data": [
@@ -2356,13 +2128,8 @@ To view the last 5 registered users, send a `GET` request to the following addre
 
 GET : `{{URL}}/api/admin/user?new=true`
 
-GET: {{URL}}/api/admin/user?new=true
-
-با ارسال این درخواست فقط 5 کاربر جدید سایت برگشت داده میشود
-
-پاسخ دریافتی:
-
-``` json
+Return Value:
+```json
 {
    "message": "the All users",
    "data": [
@@ -2405,15 +2172,8 @@ To view all orders, send a `GET` request to the following address:
 
 GET: `{{URL}}/api/admin/order`
 
-## دریافت همه سفارشات
-
-برای مشاهده همه سفارشات موفق آمیز به آدرس زیر درخواست GET ارسال کنید
-
-GET: {{URL}}/api/admin/order
-
-پاسخ دریافتی:
-
-``` json
+Return Value:
+```json
 {
    "message": "the all orders",
    "data": [
@@ -2472,16 +2232,10 @@ DELETE : `{{URL}}/api/admin/order/:orderId`
 
 or
 
-DELETE: {{URL}}/api/admin/order/:orderId
+DELETE : `{{URL}}/api/admin/order/64c27892e31f67a15158f0a3`
 
-نمونه درخواست:
-
-DELETE: {{URL}}/api/admin/order/64c27892e31f67a15158f0a3
-
-
-پاسخ دریافتی:
-
-``` json
+Return Value:
+```json
 {
    "message": "the order successfuly deleted",
    "data": {
@@ -2514,14 +2268,8 @@ To view all available shopping carts, send a `GET` request to the following addr
 
 GET: `{{URL}}/api/admin/cart`
 
-برای مشاهده همه سبد خرید ها به آدرس زیر درخواست  GET ارسال کنید
-
-
-GET: {{URL}}/api/admin/cart
-
-پاسخ دریافتی:
-
-``` json
+Return Value:
+```json
 {
    "message": "the all carts",
    "data": [
@@ -2560,7 +2308,13 @@ To add a location, send a `POST` request including the country/state|province/ci
 
 POST: `{{URL}}/api/admin/location/add`
 
-POST: {{URL}}/api/admin/location/add
+| Field | Data Type | Description |
+| :----- | :---------: | :------------ |
+| type* | String | Country or province/state or city (all in UPPERCASE) |
+| name | String | The name of the country or province/state or city|
+| url | String | Link |
+| parent | ObjectId | You must specify the parent value for province/state and city |
+<br />
 
 Request Example:
 ```json
@@ -2594,71 +2348,8 @@ or
 
 PUT: `{{URL}}/api/admin/location/update/64ea3330316f9f571f40823b`
 
-پاسخ دریافتی:
-
-``` json
-
-{
-    "message": "Location added.",
-    "data": {
-        "name": "Zahedan",
-        "url": "zahedan",
-        "parent": "64ea3270316f9f571f408238",
-        "_id": "64ea3330316f9f571f40823b",
-        "updatedAt": "2023-08-26T17:15:28.610Z",
-        "createdAt": "2023-08-26T17:15:28.610Z",
-        "__v": 0
-    }
-}
-
-```
-
-نمونه درخواست افزودن شهر:
-
-
-``` json
-
-{
-    "type": "CITY",
-    "name": "Zahedan",
-    "url": "zahedan",
-    "parent": "64ea3330316f9f571f40823b"
-}
-
-```
-
-پاسخ دریافتی:
-
-``` json
-
-{
-    "message": "Location added.",
-    "data": {
-        "name": "Zahedan",
-        "url": "zahedan",
-        "parent": "64ea3330316f9f571f40823b",
-        "_id": "64ea337b316f9f571f40823e",
-        "updatedAt": "2023-08-26T17:16:43.630Z",
-        "createdAt": "2023-08-26T17:16:43.630Z",
-        "__v": 0
-    }
-}
-
-```
-
-## بروزرسانی مکان
-
-برای بروزرسانی یک مکان به آدرس زیر درخواست PUT ارسال کنید:
-
-PUT: {{URL}}/api/admin/location/update/:locationId
-
-نمونه درخواست ارسالی:
-
-PUT: {{URL}}/api/admin/location/update/64ea3330316f9f571f40823b
-
-
-``` json
-
+Request Example:
+```json
 {
    "type": "PROVESTATE",
    "name": "Tehran",
@@ -2687,12 +2378,8 @@ To get a list of all countries, send a `GET` request including the country/state
 
 GET: `{{URL}}/api/admin/location/list`
 
-GET: {{URL}}/api/admin/location/list
-
-پاسخ دریافتی:
-
-``` json
-
+Return Value:
+```json
 {
    "message": "Country found.",
    "data": [
@@ -2721,15 +2408,12 @@ To get the details of the provinces and cities of a location, send a `GET ` requ
 
 GET : `{{URL}}/api/admin/location/update/:locationId`
 
-GET: {{URL}}/api/admin/location/view/:locationId
+or
 
 GET : `{{URL}}/api/admin/location/update/64ea34e7ed63fc37f380339a`
 
-GET: {{URL}}/api/admin/location/view/64ea34e7ed63fc37f380339a
-
-
-``` json
-
+Request Example:
+```json
 {
    "type": "COUNTRY"
 }
@@ -2767,15 +2451,12 @@ To delete a location, send a `DELETE ` request to the following address. For exa
 
 DELETE : `{{URL}}/api/admin/location/update/:locationId`
 
-DELETE: {{URL}}/api/admin/location/delete/:locationId
+or
 
 DELETE : `{{URL}}/api/admin/location/update/64ea3270316f9f571f408238`
 
-DELETE: {{URL}}/api/admin/location/delete/64ea3270316f9f571f408238
-
-
-``` json
-
+Request Example:
+```json
 {
    "type": "COUNTRY"
 }
